@@ -8,13 +8,13 @@ export function middleware(request) {
   const isHomeRoute = pathname === "/";
   const isAuthRoute = pathname === "/login";
 
-  if (!token && isHomeRoute) {
-    return NextResponse.redirect(new URL("/login", request.url));
-  }
+  // if (!token && isHomeRoute) {
+  //   return NextResponse.redirect(new URL("/login", request.url));
+  // }
 
-  if (token && isAuthRoute) {
-    return NextResponse.redirect(new URL("/", request.url));
-  }
+  // if (token && isAuthRoute) {
+  //   return NextResponse.redirect(new URL("/", request.url));
+  // }
 
   return NextResponse.next();
 }
