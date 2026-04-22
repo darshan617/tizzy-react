@@ -1,0 +1,39 @@
+.btnWrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+}
+.btnWrapper p {
+  background: var(--color-1e58b4);
+  font-size: 12px;
+  color: var(--white);
+  padding: 6px 22px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.btnWrapper span {
+  border-radius: 100px;
+  background: var(--color-1e58b4);
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+}
+.btnWrapper:hover span {
+  transform: translateX(10px);
+  transition: 0.3s;
+}
+.btnWrapper span svg {
+  transform: rotate(-45deg);
+  transition: 0.3s;
+}
+
+.btnWrapper:hover.btnWrapper span svg {
+  transform: rotate(0deg);
+  transition: 0.3s;
+}

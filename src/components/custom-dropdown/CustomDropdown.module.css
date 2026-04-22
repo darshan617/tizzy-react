@@ -1,0 +1,36 @@
+.ddWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  padding: 30px 0;
+  position: relative;
+}
+.manageServiceText {
+  color: #333233;
+}
+.ddWrapper:hover .manageServiceText {
+  color: var(--color-1e58b4);
+}
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 200px;
+  background: var(--white);
+  transition: 0.5s;
+  z-index: 2;
+}
+.dropdown a {
+  display: inline-block;
+  padding: 10px !important;
+  width: 100%;
+  border-bottom: 1px solid var(--black);
+}
+.dropdown a:hover {
+  background: var(--color-1e58b4);
+  color: var(--white);
+  width: 100%;
+  transition: 0.5s;
+}
