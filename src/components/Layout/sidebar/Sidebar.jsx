@@ -181,7 +181,7 @@ const Sidebar = ({
               </Link>
             </li>
             <li>
-              <ArrowButton text={"GET START NOW"} />
+              <ArrowButton text={"GET START NOW"} link="#" />
             </li>
           </ul>
         </div>

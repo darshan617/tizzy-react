@@ -5,12 +5,19 @@ import mainLogo from "@/assets/Navbar/mainLogo.png";
 import Link from "next/link";
 import isoImg from "@/assets/footer/iso.png";
 import MainContainer from "../main-container/MainContainer";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaLinkedinIn,
+  FaYoutube,
+} from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 const Footer = () => {
   return (
     <footer className={styles.footerContainer}>
       <MainContainer>
         <div className={styles.footerMain}>
-          <div>
+          <div className={styles.footerLogoWrapper}>
             <Image
               src={mainLogo}
               width={800}
@@ -18,6 +25,23 @@ const Footer = () => {
               alt="logo"
               className={styles.footerLogo}
             />
+            <div className={styles.socialLinksWrapper}>
+              <Link href={"#"}>
+                <FaFacebookF />
+              </Link>
+              <Link href={"#"}>
+                <FaXTwitter />
+              </Link>
+              <Link href={"#"}>
+                <FaInstagram />
+              </Link>
+              <Link href={"#"}>
+                <FaLinkedinIn />
+              </Link>
+              <Link href={"#"}>
+                <FaYoutube />
+              </Link>
+            </div>
           </div>
           <div className={styles.quickLinks}>
             <div>
