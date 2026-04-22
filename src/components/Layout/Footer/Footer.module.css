@@ -1,0 +1,90 @@
+.footerContainer {
+  width: 100%;
+  height: auto;
+  border-top: 2px solid var(--color-cfe4fa);
+}
+.footerMain {
+  width: 100%;
+  height: auto;
+  padding: 20px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.footerLogo {
+  width: 200px;
+  height: auto;
+}
+.footerDescContainer {
+  flex: 1 1 23%;
+  min-width: 23%;
+  max-width: 23%;
+}
+.footerDesc {
+  color: var(--color-333233);
+  font-size: 14px;
+  line-height: 22px;
+}
+.quickLinks {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+.quickLinks h6 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+.quickLinks a {
+  display: block;
+  width: max-content;
+  font-size: 14px;
+  color: var(--color-333233);
+  font-weight: 500;
+  margin-top: 5px;
+  position: relative;
+}
+.quickLinks a:hover {
+  color: var(--color-1e58b4);
+  transition: 0.3s;
+}
+.quickLinks a::before {
+  content: "";
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(to right, var(--color-1e58b4), #8603d7);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transition: 0.3s;
+}
+.quickLinks a:hover::before {
+  width: 100%;
+  transition: 0.3s;
+}
+.copyrightContainer {
+  width: 100%;
+  height: auto;
+  padding: 20px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.footerIsoImg {
+  width: 140px;
+  height: auto;
+}
+@media screen and (max-width: 816px) {
+  .footerDescContainer {
+    min-width: 100%;
+    max-width: 100%;
+  }
+}

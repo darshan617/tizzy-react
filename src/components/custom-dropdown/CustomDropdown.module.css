@@ -8,7 +8,7 @@
   position: relative;
 }
 .manageServiceText {
-  color: #333233;
+  color: var(--color-333233);
 }
 .ddWrapper:hover .manageServiceText {
   color: var(--color-1e58b4);

@@ -67,7 +67,7 @@
 }
 .menuLinks a {
   padding: 30px 0;
-  color: #333233;
+  color: var(--color-333233);
 }
 .menuLinks a:hover {
   color: var(--color-1e58b4);
@@ -161,5 +161,22 @@
     width: 22px;
     transition: 0.5s;
     background: var(--black);
+  }
+}
+@media screen and (max-width: 678px) {
+  .topNav ul li {
+    padding: 5px 10px;
+  }
+  .topNav ul li a {
+    font-size: 14px;
+  }
+  .topNav ul li svg {
+    width: 12px;
+  }
+  .mainNav {
+    padding: 5px 15px;
+  }
+  .mainLogo {
+    width: 140px;
   }
 }
