@@ -72,7 +72,9 @@ const Footer = () => {
 
       <MainContainer bgColor="var(--color-f4f9ff)">
         <div className={styles.copyrightContainer}>
-          <p>&copy; 2026 Tizzy Cloud. All rights reserved.</p>
+          <p className={styles.copyrightText}>
+            &copy; 2026 Tizzy Cloud. All rights reserved.
+          </p>
           <Image
             src={isoImg}
             height={800}

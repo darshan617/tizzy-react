@@ -1,0 +1,46 @@
+.aboutImgWrapper {
+  width: 100%;
+  height: 450px;
+}
+.aboutImgWrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.tab {
+  background-color: var(--color-f4f9ff);
+  padding: 30px;
+  border-radius: 40px;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px 0px 20px;
+}
+.toogleIcon {
+  display: none;
+}
+.tab img {
+  transition: 2.5s;
+  width: 100%;
+  height: 100%;
+}
+.tab img:hover {
+  transform: scale(1.2);
+  transition: 2.5s;
+}
+
+@media screen and (max-width: 1024px) {
+  .tabBtns {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .tabBtns li {
+    width: 100%;
+  }
+  .toogleIcon {
+    display: inline-block;
+  }
+}
+@media screen and (max-width: 768px) {
+  .aboutImgWrapper {
+    width: 100%;
+    height: 250px;
+  }
+}

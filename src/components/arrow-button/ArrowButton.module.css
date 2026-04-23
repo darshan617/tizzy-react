@@ -7,7 +7,7 @@
 .btnWrapper p {
   background: var(--color-1e58b4);
   font-size: 12px;
-  color: var(--white);
+  color: var(--color-ffffff);
   padding: 6px 22px;
   border-radius: 100px;
   text-transform: uppercase;

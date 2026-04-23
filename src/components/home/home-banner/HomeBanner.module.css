@@ -1,0 +1,8 @@
+.HerobannerImgWrapper {
+  height: 500px;
+}
+@media screen and (max-width: 678px) {
+  .HerobannerImgWrapper {
+    height: auto;
+  }
+}
