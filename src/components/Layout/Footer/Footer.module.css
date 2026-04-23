@@ -101,9 +101,22 @@
   width: 18px;
   height: auto;
 }
+.copyrightText {
+  font-size: 14px;
+}
 @media screen and (max-width: 816px) {
   .footerDescContainer {
     min-width: 100%;
     max-width: 100%;
+  }
+  .socialLinksWrapper {
+    margin-top: 10px;
+  }
+  .quickLinks {
+    gap: 30px;
+  }
+  .copyrightContainer {
+    margin-top: 0;
+    gap: 10px;
   }
 }

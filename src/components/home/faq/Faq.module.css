@@ -1,0 +1,27 @@
+.faq-accordion .accordion-body p {
+  color: var(--color-333233);
+}
+.faq-arrow {
+  min-width: 40px;
+  min-height: 40px;
+  background: #c9d8ea;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* active state */
+.accordion-button:not(.collapsed) .faq-arrow {
+  background: #2f5aa8;
+  color: #fff;
+}
+
+/* rotate animation */
+.faq-arrow svg {
+  transition: transform 0.3s ease;
+}
+
+.faq-arrow svg.rotate {
+  transform: rotate(45deg);
+}

@@ -18,7 +18,7 @@
   top: 100%;
   left: 0;
   width: 200px;
-  background: var(--white);
+  background: var(--color-ffffff);
   transition: 0.5s;
   z-index: 2;
 }
@@ -30,7 +30,7 @@
 }
 .dropdown a:hover {
   background: var(--color-1e58b4);
-  color: var(--white);
+  color: var(--color-ffffff);
   width: 100%;
   transition: 0.5s;
 }
