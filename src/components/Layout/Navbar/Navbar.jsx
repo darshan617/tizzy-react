@@ -45,91 +45,14 @@ const Navbar = () => {
   }, []);
   return (
     <>
-      {/* <nav className={styles.navbarContainer}>
-        <div className={`${styles.topNav}`}>
-          <div className="mainContainer">
-            <ul>
-              <li>
-                <Link href={"/#"}>Quick Assist</Link>
-              </li>
-              <li className={styles.hideLink}>
-                <Link href={"/#"}>Parther with us</Link>
-              </li>
-              <li>
-                <Link href={"/#"}>Sales Enquiry</Link>
-              </li>
-              <li className={styles.hideLink}>
-                <Link
-                  href={"tel:+9199259925"}
-                  className={styles.helplineContainer}
-                >
-                  <Image
-                    src={helplineImg}
-                    height={800}
-                    width={800}
-                    alt="helplineImg"
-                  />
-                  +91 9925 9925
-                </Link>
-              </li>
-              <li>
-                <div className={styles.authNav}>
-                  <FaRegUser />
-                  <Link href={"/login"}>Log In</Link>/
-                  <Link href={"/#"}>Sign Up</Link>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div className={styles.mainNav}>
-          <div className="mainContainer">
-            <div className={styles.mainMenuWrapper}>
-              <Image
-                src={mainLogo}
-                className={styles.mainLogo}
-                width={800}
-                height={800}
-                alt="logo"
-              />
-              <div className={styles.menuLinks}>
-                <Link href={"#"}>Tizzy Mail</Link>
-                <Link href={"#"}>Microsoft 365</Link>
-                <Link href={"#"}>Google Workspace</Link>
-                <Link href={"#"}>Migration</Link>
-                <CustomDropdown
-                  isDropdownOpen={isDropdownOpen}
-                  mainText={"Managed Services"}
-                  actionOn={"hover"}
-                  onMouseEnter={() => setIsDropdownOpen("managed-service")}
-                  onMouseLeave={() => setIsDropdownOpen("")}
-                  onClick={() => setIsDropdownOpen("managed-service")}
-                  setterKeyword="managed-service"
-                  options={MANAGED_SERVICE_OPTIONS}
-                />
-
-                <Link href={"#"} className={styles.cartCountWrapper}>
-                  <BsCart size={22} color="#8a8a8a" />
-                  <span className={styles.cartCount}>01</span>
-                </Link>
-              </div>
-              <div
-                className={styles.hamburgerMenu}
-                onClick={() => setIsSidebarOpen(true)}
-              >
-                <p className={styles.menuIcon}></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav> */}
       <header className="main-header g_header">
         {/* Top Header */}
-        <div className="top-header">
+        <div className={styles.topHeader}>
           <div className="container container-1760">
             <div className="col-lg-12">
-              <ul className="top-header-text d-flex align-items-center">
+              <ul
+                className={`${styles.topHeaderText} d-flex align-items-center`}
+              >
                 <li>
                   <Link href="/contact">Quick Assist</Link>
                 </li>
@@ -140,7 +63,7 @@ const Navbar = () => {
                   <Link href="/contact">Sales Enquiry</Link>
                 </li>
 
-                <li className="helpline">
+                <li className={styles.helpline}>
                   <a href="tel:+919925992599">
                     <Image
                       src={helplineImg}
@@ -169,13 +92,13 @@ const Navbar = () => {
                     </Link>
                   </li>
                 ) : (
-                  <li className="login">
+                  <li className={styles.login}>
                     <FaRegUser
                       size={14}
                       color="var(--color-c0daf9)"
                       className="mx-1"
                     />
-                    <Link href="/user-login"> Log In</Link>
+                    <Link href="/login"> Log In</Link>
                     <span> / </span>
                     <Link href="/user-register">Sign Up</Link>
                   </li>
@@ -227,19 +150,21 @@ const Navbar = () => {
           </div>
         </div>
       </header>
-      <div className="bottom-header">
+      <div className={styles.bottomHeader}>
         <div className="container container-1760">
           <div className="col-lg-12 d-flex align-items-center">
             {/* Workspace Icons */}
-            <div className="Workspace-section d-flex justify-content-lg-evenly justify-content-between">
+            <div
+              className={`${styles.workspaceSection} d-flex justify-content-lg-evenly justify-content-between`}
+            >
               <div
-                className="Workspace-box text-center"
+                className={`${styles.workspaceBox} text-center`}
                 data-aos="zoom-in"
                 data-aos-easing="linear"
                 data-aos-duration="800"
               >
-                <Link href="/tizzy-mail" className="workspace-a">
-                  <div className="Workspace-icon">
+                <Link href="/tizzy-mail" className={styles.workspaceA}>
+                  <div className={styles.workspaceIcon}>
                     <Image
                       src={tizzyMailImg}
                       alt="Tizzy Mail"
@@ -251,13 +176,13 @@ const Navbar = () => {
               </div>
 
               <div
-                className="Workspace-box text-center"
+                className={`${styles.workspaceBox} text-center`}
                 data-aos="zoom-in"
                 data-aos-easing="linear"
                 data-aos-duration="1200"
               >
-                <Link href="/cloud-microsoft-365" className="workspace-a">
-                  <div className="Workspace-icon">
+                <Link href="/cloud-microsoft-365" className={styles.workspaceA}>
+                  <div className={styles.workspaceIcon}>
                     <Image
                       src={microsoftImg}
                       alt="Microsoft 365"
@@ -269,13 +194,13 @@ const Navbar = () => {
               </div>
 
               <div
-                className="Workspace-box text-center"
+                className={`${styles.workspaceBox} text-center`}
                 data-aos="zoom-in"
                 data-aos-easing="linear"
                 data-aos-duration="1000"
               >
-                <Link href="/google-workspace" className="workspace-a">
-                  <div className="Workspace-icon">
+                <Link href="/google-workspace" className={styles.workspaceA}>
+                  <div className={styles.workspaceIcon}>
                     <Image
                       src={Google_WorkspaceImg}
                       alt="Google Workspace"
@@ -288,7 +213,9 @@ const Navbar = () => {
             </div>
 
             {/* CTA Button */}
-            <div className="Workspace-right Workspace-right-desktop d-flex justify-content-end">
+            <div
+              className={`${styles.workspaceRight} ${styles.workspaceRightDesktop} d-flex justify-content-end`}
+            >
               <ArrowButton text="Get Start Now" />
             </div>
           </div>
