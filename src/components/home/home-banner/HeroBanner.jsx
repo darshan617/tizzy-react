@@ -5,12 +5,12 @@ import heroBannerImg from "@/assets/home/hero-banner/home-banner.png";
 import styles from "@/components/home/home-banner/HomeBanner.module.css";
 const HeroBanner = () => {
   return (
-    <section className="home-banner position-relative">
+    <section className={`${styles.homeBanner} position-relative`}>
       <div className="container h-100">
         <div className="row h-100">
           {/* Left Content */}
           <div className="col-lg-6 col-md-6 col-12">
-            <div className="banner-text">
+            <div className={styles.bannerText}>
               <h1 className="title">Tizzy® Cloud Email Plans</h1>
 
               <h2 className="title">
@@ -35,7 +35,7 @@ const HeroBanner = () => {
           {/* Right Image */}
           <div className="col-lg-6 col-md-6 col-12 d-flex align-items-end">
             <div
-              className={`banner-img home-banner-img  ${styles.HerobannerImgWrapper}`}
+              className={`banner-img ${styles.homeBannerImg}  ${styles.HerobannerImgWrapper}`}
               data-aos="fade-up"
               data-aos-easing="linear"
               data-aos-duration="1000"

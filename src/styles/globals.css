@@ -95,6 +95,19 @@ body {
   padding-right: calc(var(--bs-gutter-x) * 0.99);
   padding-left: calc(var(--bs-gutter-x) * 0.99);
 }
+.clr {
+  width: 100%;
+  float: left;
+}
+
+.img {
+  width: 100%;
+}
+
+.svg {
+  object-fit: contain;
+  object-position: center center;
+}
 
 a,
 .btn,

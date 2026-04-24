@@ -1,8 +1,110 @@
 .HerobannerImgWrapper {
   height: 500px;
+  width: 100%;
+}
+.homeBanner {
+  height: calc(100vh - 280px);
+  background-color: var(--color-bcdaf9);
+}
+.banner-text-box {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.bannerText {
+  padding: 100px 0;
+  padding-right: 150px;
+}
+
+.bannerText .title {
+  -webkit-animation: fadeInUp 1.2s;
+  animation: fadeInUp 1.2s;
+  animation-duration: 2s;
+}
+
+.bannerText .p-content {
+  -webkit-animation: fadeInUp 1.5s;
+  animation: fadeInUp 1.5s;
+  animation-duration: 2.5s;
+}
+
+.bannerText p {
+  -webkit-animation: fadeInUp 1.5s;
+  animation: fadeInUp 1.5s;
+  animation-duration: 2.5s;
+}
+
+.bannerText .tp-btn-black {
+  -webkit-animation: zoomIn 2s;
+  animation: zoomIn 2s;
+  animation-duration: 2s;
+}
+
+@media (max-width: 1780px) {
+  .homeBanner {
+    height: 600px;
+  }
+}
+@media (max-width: 1560px) {
+}
+@media (max-width: 1480px) {
+  .bannerText {
+    padding-right: 90px;
+  }
+}
+@media (max-width: 1280px) {
+  .homeBanner {
+    height: 500px;
+  }
+  .bannerText {
+    padding-right: 0px;
+    padding: 30px 0;
+  }
+}
+@media (max-width: 1024px) {
+  .homeBanner {
+    height: 580px;
+  }
+  .homeBanner {
+    height: 100%;
+    padding: 30px 0;
+  }
+  .homeBannerImg {
+    position: relative;
+    top: 30px;
+  }
+  .bannerText {
+    padding-right: 0px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+@media screen and (max-width: 999px) {
+  .bannerText {
+    padding-right: 0px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}
+@media (max-width: 767.98px) {
 }
 @media screen and (max-width: 678px) {
   .HerobannerImgWrapper {
     height: auto;
+  }
+}
+@media (max-width: 575.98px) {
+}
+@media (max-width: 375px) {
+}
+@media (max-width: 340px) {
+  .bannerText .p-content {
+    font-size: var(--font-size-14);
+    line-height: var(--line-height-14);
+  }
+
+  .bannerText .tp-btn-black-text {
+    font-size: 10px;
   }
 }
