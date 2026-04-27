@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
-import heroBannerImg from "@/assets/home/hero-banner/home-banner.png";
 import ArrowButton from "../../arrow-button/ArrowButton";
+import heroBannerImg from "@/assets/home/hero-banner/home-banner.png";
 import styles from "@/components/home/home-banner/HomeBanner.module.css";
 const HeroBanner = () => {
   return (
