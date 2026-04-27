@@ -10,7 +10,7 @@ import 'aos/dist/aos.css';
 
 export default function App({ Component, pageProps, ...rest }) {
   const { store } = storeWrapper.useWrappedStore(rest);
-    useEffect(() => {
+  useEffect(() => {
     Aos.init({
       duration: 1000,
       once: true,

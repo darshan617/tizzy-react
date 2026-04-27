@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "@/components/home/tizzy-feature/TizzyFeature.module.css";
@@ -18,7 +18,18 @@ import ArrowButton from "@/components/arrow-button/ArrowButton";
 const TizzyFeature = () => {
   const [currentTab, setCurrentTab] = useState(0);
   console.log(currentTab);
+  const [isMobile, setIsMobile] = useState(false);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1023);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   const TAB_DATA = [
     {
       id: 0,
@@ -148,50 +159,82 @@ const TizzyFeature = () => {
                 "Email Account Management",
                 "SSL/TLS Security",
               ].map((tab, i) => (
-                <li className={`nav-item `} key={i}>
-                  <button
-                    className={`nav-link d-flex justify-content-between align-items-start ${
-                      currentTab === i ? "active" : ""
-                    }`}
-                    type="button"
-                    onClick={() => setCurrentTab(i)}
-                  >
-                    <span>{tab}</span>
-                    <span className={styles.toogleIcon}>
-                      {currentTab === i ? "-" : "+"}
-                    </span>
-                  </button>
-                </li>
+                <>
+                  <li className={`nav-item `} key={i}>
+                    <button
+                      className={`nav-link d-flex justify-content-between align-items-start ${
+                        currentTab === i ? "active" : ""
+                      }`}
+                      type="button"
+                      onClick={() => setCurrentTab(i)}
+                    >
+                      <span>{tab}</span>
+                      <span className={styles.toogleIcon}>
+                        {currentTab === i ? "-" : "+"}
+                      </span>
+                    </button>
+                    {isMobile && currentTab === i && (
+                      <div className="tab-content">
+                        <div
+                          key={currentTab}
+                          className={`tab-pane fade show active ${styles.tab}`}
+                          id={`tab${currentTab}`}
+                        >
+                          <div className="row ">
+                            <div className="col-lg-6">
+                              <div className="features-img img-zoom">
+                                <Image
+                                  src={TAB_DATA?.[currentTab]?.img}
+                                  alt={`Feature ${currentTab}`}
+                                />
+                              </div>
+                            </div>
+
+                            <div className="col-lg-6 d-flex align-items-center">
+                              <div className="features-text">
+                                {TAB_DATA?.[currentTab]?.desc?.map((item) => {
+                                  return <p>{item}</p>;
+                                })}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </li>
+                </>
               ))}
             </ul>
             {console.log(TAB_DATA[currentTab]?.id === currentTab)}
             {/* TAB CONTENT */}
-            <div className="tab-content mt-50">
-              <div
-                key={currentTab}
-                className={`tab-pane fade show active ${styles.tab}`}
-                id={`tab${currentTab}`}
-              >
-                <div className="row">
-                  <div className="col-lg-6">
-                    <div className="features-img img-zoom">
-                      <Image
-                        src={TAB_DATA?.[currentTab]?.img}
-                        alt={`Feature ${currentTab}`}
-                      />
+            {!isMobile && (
+              <div className="tab-content mt-50">
+                <div
+                  key={currentTab}
+                  className={`tab-pane fade show active ${styles.tab}`}
+                  id={`tab${currentTab}`}
+                >
+                  <div className="row">
+                    <div className="col-lg-6">
+                      <div className="features-img img-zoom">
+                        <Image
+                          src={TAB_DATA?.[currentTab]?.img}
+                          alt={`Feature ${currentTab}`}
+                        />
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="col-lg-6 d-flex align-items-center">
-                    <div className="features-text">
-                      {TAB_DATA?.[currentTab]?.desc?.map((item) => {
-                        return <p>{item}</p>;
-                      })}
+                    <div className="col-lg-6 d-flex align-items-center">
+                      <div className="features-text">
+                        {TAB_DATA?.[currentTab]?.desc?.map((item) => {
+                          return <p>{item}</p>;
+                        })}
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

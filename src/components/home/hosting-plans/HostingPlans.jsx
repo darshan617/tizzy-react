@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import styles from "@/components/home/hosting-plans/HostingPlans.module.css";
 
 const HostingPlans = () => {
   const PLANS = [
@@ -27,13 +28,15 @@ const HostingPlans = () => {
   ];
 
   return (
-    <section className="hosting-plans-section position-relative pt-100 pb-100">
+    <section
+      className={`${styles.HostingPlansSection} position-relative pt-100 pb-100`}
+    >
       <div className="container">
         {/* TITLE */}
         <div className="row">
           <div className="col-lg-12">
             <div
-              className="plans-title text-center"
+              className={`${styles.PlansTitle} text-center`}
               data-aos="fade-up"
               data-aos-duration="600"
             >
@@ -45,7 +48,7 @@ const HostingPlans = () => {
         {/* PLANS */}
         <div className="row justify-content-center mt-40">
           <div className="col-xxl-10 col-xl-10 col-lg-12 col-md-12">
-            <div className="row gx-4">
+            <div className="row g-4">
               {PLANS.map((plan, index) => (
                 <div
                   key={plan.id}
@@ -53,15 +56,15 @@ const HostingPlans = () => {
                   data-aos="fade-up"
                   data-aos-duration="800"
                 >
-                  <div className="plan-box">
+                  <div className={`${styles.PlanBox}`}>
                     <div className="best-value">
                       <h3 className="small-text mb-0 weight-Regular">
                         {plan.name}
                       </h3>
                     </div>
 
-                    <div className="plans-details">
-                      <div className="plans-details-text">
+                    <div className={`${styles.PlansDetails}`}>
+                      <div className={`${styles.PlansDetailsText}`}>
                         <h4 className="div-text mb-0 weight-Regular">
                           {plan.name}
                         </h4>
@@ -80,7 +83,7 @@ const HostingPlans = () => {
 
                         <Link
                           href={`/select-plan/${plan.id}`}
-                          className="buy-now"
+                          className={`${styles.BuyNow}`}
                         >
                           Buy Now
                         </Link>
@@ -93,7 +96,9 @@ const HostingPlans = () => {
                         </div>
                       </div>
 
-                      <div className="plans-details-text plans-details-text-bottom">
+                      <div
+                        className={`${styles.PlansDetailsText} ${styles.PlansDetailsTextBottom}`}
+                      >
                         <h4 className="small-text">GST 18% Additional</h4>
 
                         <Link href="/tizzy-mail" className="tp-btn-black">

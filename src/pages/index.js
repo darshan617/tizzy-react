@@ -14,12 +14,12 @@ import Testimonial from "@/components/home/testimonials/Testimonial ";
 const Home = () => {
   return (
     <Layout>
-    <HeroBanner/>
-    <HomePlanCard/>
-    <TizzyFeature/>
-    <HostingPlans/>
-    <Faq/>
-    <Testimonial/>
+      <HeroBanner />
+      <HomePlanCard />
+      <TizzyFeature />
+      <HostingPlans />
+      <Faq />
+      <Testimonial />
     </Layout>
   );
 };

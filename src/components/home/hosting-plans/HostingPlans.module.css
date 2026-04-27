@@ -1,0 +1,311 @@
+.HostingPlansSection {
+  background: var(--color-f4f9ff);
+}
+
+.PlanBox {
+  background: var(--color-f4f9ff);
+  border-radius: 30px;
+  border: solid 2px var(--color-bcdaf9);
+  display: inline-block;
+  width: 100%;
+  box-shadow: 0px 10px 30px 0px #00000045;
+  -webkit-transition: all 0.5s ease-out 0s;
+  -moz-transition: all 0.5s ease-out 0s;
+  -ms-transition: all 0.5s ease-out 0s;
+  -o-transition: all 0.5s ease-out 0s;
+  transition: all 0.5s ease-out 0s;
+}
+
+.best-value {
+  text-align: center;
+  padding: 14px 15px;
+  -webkit-transition: all 0.5s ease-out 0s;
+  -moz-transition: all 0.5s ease-out 0s;
+  -ms-transition: all 0.5s ease-out 0s;
+  -o-transition: all 0.5s ease-out 0s;
+  transition: all 0.5s ease-out 0s;
+}
+
+.PlansDetailsText {
+  padding: 50px 30px 20px 30px;
+  border-radius: 30px 30px 0 0;
+  background: var(--color-f4f9ff);
+  -webkit-transition: all 0.5s ease-out 0s;
+  -moz-transition: all 0.5s ease-out 0s;
+  -ms-transition: all 0.5s ease-out 0s;
+  -o-transition: all 0.5s ease-out 0s;
+  transition: all 0.5s ease-out 0s;
+}
+
+.PlansDetailsText .div-title {
+  color: var(--color-1e58b4);
+}
+
+.PlansDetailsText .div-sub-title {
+  color: var(--color-1e58b4);
+}
+
+.PlansDetails {
+  border-radius: 30px;
+  border-top: solid 2px var(--color-bcdaf9);
+  position: relative;
+  -webkit-transition: all 0.5s ease-out 0s;
+  -moz-transition: all 0.5s ease-out 0s;
+  -ms-transition: all 0.5s ease-out 0s;
+  -o-transition: all 0.5s ease-out 0s;
+  transition: all 0.5s ease-out 0s;
+}
+
+.most-popular {
+  position: absolute;
+  padding: 10px 30px;
+  background: var(--color-bcdaf9);
+  border-radius: 0 0 15px 15px;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  -webkit-transition: all 0.5s ease-out 0s;
+  -moz-transition: all 0.5s ease-out 0s;
+  -ms-transition: all 0.5s ease-out 0s;
+  -o-transition: all 0.5s ease-out 0s;
+  transition: all 0.5s ease-out 0s;
+}
+
+.most-popular-offer {
+  width: calc(100% - 100px);
+}
+
+.PlansDetailsTextBottom {
+  background: var(--color-f4f9ff);
+  border-radius: 0 0 30px 30px;
+  padding: 20px 30px 30px 30px;
+  -webkit-transition: all 0.5s ease-out 0s;
+  -moz-transition: all 0.5s ease-out 0s;
+  -ms-transition: all 0.5s ease-out 0s;
+  -o-transition: all 0.5s ease-out 0s;
+  transition: all 0.5s ease-out 0s;
+}
+
+.PlansDetailsText .BuyNow {
+  color: var(--color-ffffff);
+  font-size: var(--font-size-22);
+  padding: 15px 15px;
+  text-align: center;
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+  background: var(--color-000000);
+  border: none;
+  -webkit-transition: all 0.5s ease-out 0s;
+  -moz-transition: all 0.5s ease-out 0s;
+  -ms-transition: all 0.5s ease-out 0s;
+  -o-transition: all 0.5s ease-out 0s;
+  transition: all 0.5s ease-out 0s;
+}
+
+.PlansDetailsText span.extra-small-text {
+  color: var(--color-848484);
+}
+
+.gst-bg {
+  padding: 12px 30px;
+  background: var(--color-ffffff);
+  -webkit-transition: all 0.5s ease-out 0s;
+  -moz-transition: all 0.5s ease-out 0s;
+  -ms-transition: all 0.5s ease-out 0s;
+  -o-transition: all 0.5s ease-out 0s;
+  transition: all 0.5s ease-out 0s;
+}
+
+.renews {
+  margin: 0;
+}
+
+.PlansDetailsText .tp-btn-black-text {
+  color: var(--color-000000);
+  background-color: var(--color-bcdaf9);
+  -webkit-transition: all 0.5s ease-out 0s;
+  -moz-transition: all 0.5s ease-out 0s;
+  -ms-transition: all 0.5s ease-out 0s;
+  -o-transition: all 0.5s ease-out 0s;
+  transition: all 0.5s ease-out 0s;
+}
+
+.PlansDetailsText .tp-btn-black-circle {
+  background: var(--color-bcdaf9);
+}
+
+.PlansDetailsText .tp-btn-black-circle > svg {
+  color: var(--color-000000);
+}
+
+.PlanBox:hover {
+  background: var(--color-bcdaf9);
+}
+
+.PlanBox:hover .most-popular {
+  background: var(--color-32a953);
+}
+
+.PlansDetailsText:hover .BuyNow {
+  background: var(--color-1e58b4);
+  color: var(--color-ffffff);
+}
+
+.PlansDetailsText:hover .tp-btn-black-text {
+  color: var(--color-ffffff);
+  background-color: var(--color-1e58b4);
+}
+
+.PlansDetailsText:hover .tp-btn-black-circle {
+  background: var(--color-1e58b4);
+}
+
+.PlansDetailsText:hover .tp-btn-black-circle > svg {
+  color: var(--color-ffffff);
+}
+
+/* nav-tabs */
+.monthly-yearly-plan {
+  margin-bottom: 20px;
+}
+
+.monthly-yearly-plan .nav-tabs {
+  border: none;
+  width: auto;
+  background: var(--color-bcdaf9);
+  border-radius: 30px;
+}
+
+.monthly-yearly-plan .nav-tabs .nav-link {
+  color: var(--color-000000);
+  font-size: var(--font-size-22);
+  padding: 14px 35px;
+  text-align: center;
+  border-radius: 50px;
+  background: var(--color-bcdaf9);
+  border: none;
+  margin: 0;
+  -webkit-transition: all 0.5s ease-out 0s;
+  -moz-transition: all 0.5s ease-out 0s;
+  -ms-transition: all 0.5s ease-out 0s;
+  -o-transition: all 0.5s ease-out 0s;
+  transition: all 0.5s ease-out 0s;
+}
+
+.monthly-yearly-plan .nav-tabs .nav-link.active {
+  background: var(--color-1e58b4);
+  color: var(--color-ffffff);
+}
+
+.with-without-teams {
+  margin-bottom: 20px;
+}
+
+.with-without-teams .nav-tabs {
+  border: none;
+  width: auto;
+  background: var(--color-ffffff);
+  border-radius: 0;
+}
+
+.with-without-teams .nav-tabs .nav-link {
+  color: var(--color-000000);
+  font-size: var(--font-size-22);
+  padding: 0 15px 10px;
+  margin: 0 5px;
+  text-align: center;
+  border-radius: 0px;
+  background: var(--color-ffffff);
+  border: none;
+  border-bottom: solid 1.8px var(--color-848484);
+  -webkit-transition: all 0.5s ease-out 0s;
+  -moz-transition: all 0.5s ease-out 0s;
+  -ms-transition: all 0.5s ease-out 0s;
+  -o-transition: all 0.5s ease-out 0s;
+  transition: all 0.5s ease-out 0s;
+}
+
+.with-without-teams .nav-tabs .nav-link.active {
+  background: var(--color-ffffff);
+  color: var(--color-32a953);
+  border-bottom: solid 1.8px var(--color-32a953);
+}
+
+@media (max-width: 1780px) {
+  .PlansDetailsText .BuyNow {
+    padding: 14px 16px;
+  }
+
+  .PlansDetailsText {
+    padding: 60px 30px 20px 30px;
+  }
+
+  .PlansDetailsTextBottom {
+    padding: 20px 30px 30px 30px;
+  }
+}
+
+@media (max-width: 1480px) {
+  .PlansDetailsText {
+    padding: 50px 20px 15px 20px;
+  }
+
+  .PlansDetailsTextBottom {
+    padding: 20px 20px 20px 20px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .PlanBox {
+    border-radius: 20px;
+  }
+
+  .PlansDetailsText {
+    padding: 50px 20px 20px 20px;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .PlansDetailsTextBottom {
+    padding: 20px 20px 20px 20px;
+    border-radius: 0 0 20px 20px;
+  }
+
+  .PlansDetailsText .BuyNow {
+    padding: 10px 16px;
+    border-radius: 8px;
+  }
+}
+
+@media (max-width: 1199.98px) {
+  .PlansDetailsText {
+    padding: 50px 10px 15px 10px;
+  }
+  .PlansDetailsTextBottom {
+    padding: 10px 10px 10px 10px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .plan-box {
+    margin-bottom: 30px;
+    height: auto;
+  }
+}
+
+@media (max-width: 800px) {
+  .PlansDetailsText {
+    padding: 50px 20px 15px 20px;
+  }
+  .PlansDetailsTextBottom {
+    padding: 20px 20px 20px 20px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .PlansDetailsText .BuyNow {
+    padding: 13px 16px;
+    border-radius: 8px;
+  }
+}
