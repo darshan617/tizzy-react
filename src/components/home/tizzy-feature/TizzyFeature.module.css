@@ -37,6 +37,10 @@
   .toogleIcon {
     display: inline-block;
   }
+  .tab {
+    border-radius: 0 0 30px 30px;
+    padding: 10px;
+  }
 }
 @media screen and (max-width: 768px) {
   .aboutImgWrapper {

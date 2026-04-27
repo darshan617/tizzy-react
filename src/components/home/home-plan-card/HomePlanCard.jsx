@@ -3,6 +3,8 @@ import React from "react";
 import dataRecoveryImg from "@/assets/home/home-plan-cards/data-recovery.png";
 import emailImg from "@/assets/home/home-plan-cards/email.png";
 import verifiedImg from "@/assets/home/home-plan-cards/verified.png";
+import styles from "@/components/home/home-plan-card/HomePlanCard.module.css";
+
 const HomePlanCard = () => {
   const CARD_DATA = [
     {
@@ -17,13 +19,13 @@ const HomePlanCard = () => {
     },
     {
       img: verifiedImg,
-      title: "AWS Security Standardsd",
+      title: "AWS Security Standards",
       desc: `AWS Foundational Security Best Practices, CIS AWS Foundations Benchmark & PCI DSS`,
     },
   ];
 
   return (
-    <section className="home-plan-section">
+    <section className={`${styles.HomePlanSection}`}>
       <div className="container">
         <div className="row">
           {/* Box 1 */}
@@ -31,7 +33,7 @@ const HomePlanCard = () => {
             return (
               <div className="col-lg-4 col-md-4 col-xl-4 col-sm-4 col-12">
                 <div
-                  className="home-plan-box"
+                  className={`${styles.HomePlanBox}`}
                   data-aos="fade-up"
                   data-aos-easing="linear"
                   data-aos-duration="600"

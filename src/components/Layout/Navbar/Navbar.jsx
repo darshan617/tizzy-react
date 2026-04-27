@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useRef, useState } from "react";
 import styles from "@/components/Layout/Navbar/Navbar.module.css";
 import Link from "next/link";
@@ -12,10 +13,54 @@ import ArrowButton from "@/components/arrow-button/ArrowButton";
 import tizzyMailImg from "@/assets/navbar/tizzyMail.png";
 import microsoftImg from "@/assets/navbar/microsoft.png";
 import Google_WorkspaceImg from "@/assets/navbar/Google_Workspace.png";
+import Cookies from "js-cookie";
+import { useRouter } from "next/router";
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState("");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isUserLoginIn, setIsUserLoginIn] = useState(false);
+  const [userData, setUserData] = useState(null);
+  const router = useRouter();
+  // const isUserLoginIn = (() => {
+  //   try {
+  //     const cookie = Cookies.get("userData");
+  //     if (!cookie) return false;
+
+  //     const parsed = JSON.parse(cookie);
+  //     return Object.keys(parsed).length > 0;
+  //   } catch {
+  //     return false;
+  //   }
+  // })();
+  // const userData = (() => {
+  //   try {
+  //     const cookie = Cookies.get("userData");
+  //     if (!cookie) return null;
+
+  //     const parsed = JSON.parse(cookie);
+  //     return parsed;
+  //   } catch (error) {
+  //     return null;
+  //   }
+  // })();
+  useEffect(() => {
+    try {
+      const cookie = Cookies.get("userData");
+      if (!cookie) return;
+
+      const parsed = JSON.parse(cookie);
+
+      if (parsed && Object.keys(parsed).length > 0) {
+        setIsUserLoginIn(true);
+        setUserData(parsed);
+      }
+    } catch (err) {
+      setIsUserLoginIn(false);
+      setUserData(null);
+    }
+  }, []);
+  console.log("userData", userData, isUserLoginIn);
 
   const MANAGED_SERVICE_OPTIONS = [
     {
@@ -76,18 +121,20 @@ const Navbar = () => {
                 </li>
 
                 {/* Auth Section */}
-                {false ? (
+                {isUserLoginIn ? (
                   <li className="topbar-dropdown">
                     <Link
                       href="/dashboard"
                       className="d-flex align-items-center gap-2 text-decoration-none"
                     >
                       <div className="rounded-circle d-flex align-items-center justify-content-center text-white topbar-avatar">
-                        {user.name?.charAt(0)}
+                        {userData?.name?.charAt(0) || ""}
                       </div>
 
                       <div className="d-none d-md-flex flex-column lh-sm text-start">
-                        <span className="text-white">{user.name}</span>
+                        <span className="text-white">
+                          {userData?.name || ""}
+                        </span>
                       </div>
                     </Link>
                   </li>
@@ -98,9 +145,9 @@ const Navbar = () => {
                       color="var(--color-c0daf9)"
                       className="mx-1"
                     />
-                    <Link href="/login"> Log In</Link>
+                    <Link href="auth/login"> Log In</Link>
                     <span> / </span>
-                    <Link href="/user-register">Sign Up</Link>
+                    <Link href="/auth/signup">Sign Up</Link>
                   </li>
                 )}
               </ul>
@@ -226,6 +273,8 @@ const Navbar = () => {
         setIsSidebarOpen={setIsSidebarOpen}
         isDropdownOpen={isDropdownOpen}
         setIsDropdownOpen={setIsDropdownOpen}
+        isUserLoginIn={isUserLoginIn}
+        userData={userData}
       />
     </>
   );

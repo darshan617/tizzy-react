@@ -6,12 +6,22 @@ import Link from "next/link";
 import { IoCloseOutline } from "react-icons/io5";
 import CustomDropdown from "@/components/custom-dropdown/CustomDropdown";
 import ArrowButton from "@/components/arrow-button/ArrowButton";
+import Cookies from "js-cookie";
+import { useRouter } from "next/router";
+
 const Sidebar = ({
   isSidebarOpen,
   setIsSidebarOpen,
   isDropdownOpen,
   setIsDropdownOpen,
+  userData,
+  isUserLoginIn,
 }) => {
+  const router = useRouter();
+  const logout = () => {
+    Cookies.remove("userData");
+    router?.reload();
+  };
   const dropdownOptions = {
     manageService: [
       {
@@ -49,6 +59,7 @@ const Sidebar = ({
       {
         label: "Logout",
         link: "#",
+        onClick: logout,
       },
     ],
   };
@@ -150,21 +161,24 @@ const Sidebar = ({
                 ddStyles={commonDropdownStyles.dropdown}
               />
             </li>
-            <li>
-              <CustomDropdown
-                isDropdownOpen={isDropdownOpen}
-                mainText={`Hello, User`}
-                actionOn={"hover"}
-                onMouseEnter={() => setIsDropdownOpen("userDetails")}
-                onMouseLeave={() => setIsDropdownOpen("")}
-                onClick={() => setIsDropdownOpen("userDetails")}
-                setterKeyword="userDetails"
-                options={dropdownOptions?.userDetails}
-                customStyles={commonDropdownStyles.wrapper}
-                linkStyles={commonDropdownStyles.link}
-                ddStyles={commonDropdownStyles.dropdown}
-              />
-            </li>
+            {isUserLoginIn && (
+              <li>
+                <CustomDropdown
+                  isDropdownOpen={isDropdownOpen}
+                  mainText={`Hello, ${userData?.name}`}
+                  actionOn={"hover"}
+                  onMouseEnter={() => setIsDropdownOpen("userDetails")}
+                  onMouseLeave={() => setIsDropdownOpen("")}
+                  onClick={() => setIsDropdownOpen("userDetails")}
+                  setterKeyword="userDetails"
+                  options={dropdownOptions?.userDetails}
+                  customStyles={commonDropdownStyles.wrapper}
+                  linkStyles={commonDropdownStyles.link}
+                  ddStyles={commonDropdownStyles.dropdown}
+                />
+              </li>
+            )}
+
             <li>
               <Link href={"#"} className={styles.otherLinks}>
                 About Us

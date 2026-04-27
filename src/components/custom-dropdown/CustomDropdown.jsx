@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import styles from "@/components/custom-dropdown/CustomDropdown.module.css";
 import { IoChevronDown } from "react-icons/io5";
@@ -43,9 +44,15 @@ const CustomDropdown = ({
         <div className={styles.dropdown} style={ddStyles}>
           {options?.map((item, idx) => {
             return (
-              <Link href={item?.link} style={linkStyles}>
-                {item?.label}
-              </Link>
+              <>
+                {item?.onClick ? (
+                  <button onClick={() => item?.onClick()}>{item?.label}</button>
+                ) : (
+                  <Link href={item?.link} style={linkStyles}>
+                    {item?.label}
+                  </Link>
+                )}
+              </>
             );
           })}
         </div>
