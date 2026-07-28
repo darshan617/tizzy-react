@@ -10,9 +10,9 @@ import { BsCart } from "react-icons/bs";
 import Sidebar from "../sidebar/Sidebar";
 import CustomDropdown from "@/components/custom-dropdown/CustomDropdown";
 import ArrowButton from "@/components/arrow-button/ArrowButton";
-import tizzyMailImg from "@/assets/navbar/tizzyMail.png";
-import microsoftImg from "@/assets/navbar/microsoft.png";
-import Google_WorkspaceImg from "@/assets/navbar/Google_Workspace.png";
+import tizzyMailImg from "@/assets/Navbar/tizzyMail.png";
+import microsoftImg from "@/assets/Navbar/microsoft.png";
+import Google_WorkspaceImg from "@/assets/Navbar/Google_Workspace.png";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 
