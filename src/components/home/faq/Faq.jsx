@@ -2,36 +2,38 @@ import React, { useState } from "react";
 import { FiArrowRight, FiArrowUpRight } from "react-icons/fi";
 import styles from "@/components/home/faq/Faq.module.css";
 
-const Faq = () => {
+const DEFAULT_FAQ_DATA = [
+  {
+    question: "What is Cloud Business Email Hosting Service?",
+    answer:
+      "Tizzy Cloud Email Hosting is a service setup on Cloud Computing Environment. Cloud enables high availability or uptime of service along with safety and security of stored data. Backup and disaster recovery is very fast on Cloud servers.",
+  },
+  {
+    question: "What is Tizzy®Mail?",
+    answer:
+      "Tizzy®Mail is a Cloud Business Email Hosting Solution provided by Tizzy®Cloud. It is hosted on the most advanced Cloud Computing Infrastructure of the world.",
+  },
+  {
+    question: "We have not heard about Tizzy®Mail so How old is Tizzy®Mail?",
+    answer:
+      "Tizzy®Mail has a consistent growth record of more than 7 years. We have thousands of email users comprising of small and big corporate companies.",
+  },
+  {
+    question: "How do we migrate to Tizzy®Mail?",
+    answer:
+      "Migrating to Tizzy® Mail is very easy. Our technical support specialist can help you in migrating your email services or email data to Tizzy®Mail.",
+  },
+  {
+    question: "How to renew the services next year?",
+    answer:
+      "You will get a daily email notification on your registered email address 7 days prior to the expiry date. You can reply to the email and make payment as per the invoice to process the renewal.",
+  },
+];
+
+const Faq = ({ data }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const FAQ_DATA = [
-    {
-      question: "What is Cloud Business Email Hosting Service?",
-      answer:
-        "Tizzy Cloud Email Hosting is a service setup on Cloud Computing Environment. Cloud enables high availability or uptime of service along with safety and security of stored data. Backup and disaster recovery is very fast on Cloud servers.",
-    },
-    {
-      question: "What is Tizzy®Mail?",
-      answer:
-        "Tizzy®Mail is a Cloud Business Email Hosting Solution provided by Tizzy®Cloud. It is hosted on the most advanced Cloud Computing Infrastructure of the world.",
-    },
-    {
-      question: "We have not heard about Tizzy®Mail so How old is Tizzy®Mail?",
-      answer:
-        "Tizzy®Mail has a consistent growth record of more than 7 years. We have thousands of email users comprising of small and big corporate companies.",
-    },
-    {
-      question: "How do we migrate to Tizzy®Mail?",
-      answer:
-        "Migrating to Tizzy® Mail is very easy. Our technical support specialist can help you in migrating your email services or email data to Tizzy®Mail.",
-    },
-    {
-      question: "How to renew the services next year?",
-      answer:
-        "You will get a daily email notification on your registered email address 7 days prior to the expiry date. You can reply to the email and make payment as per the invoice to process the renewal.",
-    },
-  ];
+  const FAQ_DATA = data && data.length > 0 ? data : DEFAULT_FAQ_DATA;
 
   const toggleFAQ = (index) => {
     setActiveIndex(activeIndex === index ? null : index);

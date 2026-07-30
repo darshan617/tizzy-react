@@ -1,0 +1,14 @@
+.homeBanner {
+  height: calc(100vh - 280px);
+  background-color: var(--color-bcdaf9);
+}
+
+.bannerText {
+  padding: 100px 0;
+  padding-right: 150px;
+}
+
+.bannerImg{
+    width: 100% !important;
+    height: auto !important;
+}
