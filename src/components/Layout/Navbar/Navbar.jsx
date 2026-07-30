@@ -159,17 +159,19 @@ const Navbar = () => {
         <div className={styles.mainNav} ref={navRef}>
           <div className="mainContainer">
             <div className={styles.mainMenuWrapper}>
+              <Link href="/">
               <Image
                 src={mainLogo}
                 className={styles.mainLogo}
                 width={800}
-                height={800}
-                alt="logo"
-              />
+                  height={800}
+                  alt="logo"
+                />
+              </Link>
               <div className={styles.menuLinks}>
                 <Link href={"/tizzy-mail"}>Tizzy Mail</Link>
                 <Link href={"/cloud-microsoft-365"}>Microsoft 365</Link>
-                <Link href={"#"}>Google Workspace</Link>
+                <Link href={"/google-workspace"}>Google Workspace</Link>
                 <Link href={"#"}>Migration</Link>
                 <CustomDropdown
                   isDropdownOpen={isDropdownOpen}
