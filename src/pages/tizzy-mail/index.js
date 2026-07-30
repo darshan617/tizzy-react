@@ -1,5 +1,5 @@
 import React from 'react'
-import Layout from '../../components/layout/Layout'
+import Layout from '../../components/Layout/Layout'
 import MailBanner from '@/components/tizzy-mail/mail-banner/MailBanner'
 import PricingPlans from '@/components/tizzy-mail/pricing-plan/PricingPlans'
 import WebMailFeature from '@/components/tizzy-mail/web-mail-feature/WebMailFeature'
