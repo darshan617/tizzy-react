@@ -1,0 +1,8 @@
+.CheckIcon {
+  color: #005abb;
+  transition: color 0.5s ease-out;
+}
+
+:global(.workspace-plan-box:hover) .CheckIcon {
+  color: #ffffff;
+}

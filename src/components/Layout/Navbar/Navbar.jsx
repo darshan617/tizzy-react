@@ -167,8 +167,8 @@ const Navbar = () => {
                 alt="logo"
               />
               <div className={styles.menuLinks}>
-                <Link href={"#"}>Tizzy Mail</Link>
-                <Link href={"#"}>Microsoft 365</Link>
+                <Link href={"/tizzy-mail"}>Tizzy Mail</Link>
+                <Link href={"/cloud-microsoft-365"}>Microsoft 365</Link>
                 <Link href={"#"}>Google Workspace</Link>
                 <Link href={"#"}>Migration</Link>
                 <CustomDropdown

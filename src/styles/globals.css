@@ -410,7 +410,7 @@ p {
 }
 
 .tp-btn-black-circle > svg {
-  width: 14px;
+  /* width: 14px; */
   margin-left: 3px;
   color: var(--color-ffffff);
   transform: translateX(-2px);
@@ -1639,7 +1639,7 @@ p {
 .workspace-list li {
   margin-bottom: 18px;
   position: relative;
-  padding-left: 30px;
+  /* padding-left: 30px; */
   font-size: var(--font-size-19);
   line-height: var(--line-height-19);
   color: var(--color-000000);
@@ -1762,6 +1762,10 @@ p {
   -ms-transition: all 0.5s ease-out 0s;
   -o-transition: all 0.5s ease-out 0s;
   transition: all 0.5s ease-out 0s;
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: start;
+  gap: 8px;
 }
 
 .plans-details-list li:nth-child(odd) {
@@ -1820,8 +1824,8 @@ p {
   margin-bottom: 40px;
 }
 
-.workspace-plan-box:hover .plans-details-list li img {
-  filter: brightness(100);
+.workspace-plan-box:hover .plans-details-list li .CheckIcon {
+  color: var(--color-ffffff);
 }
 
 .workspace-plan-box:hover .plans-details-text {
@@ -1870,6 +1874,10 @@ p {
 
 .workspace-plan-box:hover .plans-details-list li {
   background: var(--color-1e58b4);
+  color: var(--color-ffffff);
+}
+
+.workspace-plan-box:hover .plans-details-list li .CheckIcon {
   color: var(--color-ffffff);
 }
 
