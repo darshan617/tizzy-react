@@ -1,0 +1,7 @@
+.checkCircle{
+    color: #6aa3ff75;
+}
+
+:global(.workspace-plan-box:hover) .checkCircle {
+    color: #ffffff;
+  }
