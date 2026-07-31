@@ -1,6 +1,5 @@
 import Image from "next/image";
 import React from "react";
-import styles from "@/components/tizzy-mail/why-choose/WhyChoose.module.css";
 import whyChooseBg from "@/assets/images/Why-Choose-Tizzy-Mail-bg.png";
 
 const WhyChoose = () => {
