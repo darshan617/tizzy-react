@@ -110,16 +110,21 @@ const WhyChooseMicrosoft = () => {
                   Get in touch today with a Tizzy Cloud team member to identify
                   the perfect Microsoft 365 plan for your needs.
                 </p>
-                <Link
-                  href="#"
+                <span
+                  onClick={() => {
+                    const pricingMicrosoft = document.getElementById("pricing-microsoft");
+                    if (pricingMicrosoft) {
+                      pricingMicrosoft.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }}
                   className="tp-btn-black mt-30 aos-init aos-animate"
                   data-aos="fade-up"
                   data-aos-easing="linear"
                   data-aos-duration="1400"
                 >
                   <span className="tp-btn-black-filter d-inline-flex align-items-center">
-                    <span className="tp-btn-black-text">View Pricing</span>
-                    <span className="tp-btn-black-circle">
+                    <span className="tp-btn-black-text" style={{ cursor: "pointer" }}>View Pricing</span>
+                    <span className="tp-btn-black-circle" style={{ cursor: "pointer" }}>
                       <svg
                         width="10"
                         height="10"
@@ -137,7 +142,7 @@ const WhyChooseMicrosoft = () => {
                       </svg>
                     </span>
                   </span>
-                </Link>
+                </span>
               </div>
             </div>
           </div>

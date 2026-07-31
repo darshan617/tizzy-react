@@ -14,6 +14,7 @@ const MicroSoft365 = ({
   imageHeight,
   objectFit = "fill",
   objectPosition = "end",
+  textColor = "black",
   
 }) => {
   return (
@@ -41,7 +42,7 @@ const MicroSoft365 = ({
         <div className="row h-100">
           <div className="col-lg-6 col-md-12 col-12 d-flex align-items-center">
             <div className="banner-text">
-              <h1 className="title mb-0">{title}</h1>
+              <h1 className="title mb-0" style={{ color: textColor }}>{title}</h1>
               <p className="p-content">{description}</p>
               <ul
                 className="workspace-list mt-40 aos-init aos-animate"

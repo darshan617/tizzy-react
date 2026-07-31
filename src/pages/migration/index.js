@@ -1,8 +1,13 @@
+import Layout from '@/components/Layout/Layout'
+import Migration from '@/components/migration/Migration'
 import React from 'react'
+
 
 const MigrationPage = () => {
   return (
-    <div></div>
+    <Layout>
+      <Migration />
+    </Layout>
   )
 }
 

@@ -112,22 +112,22 @@ const Sidebar = ({
         <div className={styles.sidebarContent}>
           <ul>
             <li>
-              <Link href={"#"} className={styles.sidebarMenuLinks}>
+              <Link href={"/tizzy-mail"} className={styles.sidebarMenuLinks}>
                 Tizzy Mail
               </Link>
             </li>
             <li>
-              <Link href={"#"} className={styles.sidebarMenuLinks}>
+              <Link href={"/cloud-microsoft-365"} className={styles.sidebarMenuLinks}>
                 Microsoft 365
               </Link>
             </li>
             <li>
-              <Link href={"#"} className={styles.sidebarMenuLinks}>
+              <Link href={"/google-workspace"} className={styles.sidebarMenuLinks}>
                 Google Workspace
               </Link>
             </li>
             <li>
-              <Link href={"#"} className={styles.sidebarMenuLinks}>
+              <Link href={"/migration"} className={styles.sidebarMenuLinks}>
                 Migration
               </Link>
             </li>
@@ -180,22 +180,22 @@ const Sidebar = ({
             )}
 
             <li>
-              <Link href={"#"} className={styles.otherLinks}>
+              <Link href={"/about"} className={styles.otherLinks}>
                 About Us
               </Link>
             </li>
             <li>
-              <Link href={"#"} className={styles.otherLinks}>
+              <Link href={"/partner"} className={styles.otherLinks}>
                 Partner with us
               </Link>
             </li>
             <li>
-              <Link href={"#"} className={styles.otherLinks}>
+              <Link href={"/contact"} className={styles.otherLinks}>
                 Contact Us
               </Link>
             </li>
             <li>
-              <ArrowButton text={"GET START NOW"} link="#" />
+              <ArrowButton text={"GET START NOW"} link={"/contact"} />
             </li>
           </ul>
         </div>

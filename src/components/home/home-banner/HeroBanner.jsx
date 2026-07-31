@@ -28,7 +28,7 @@ const HeroBanner = () => {
                 quick support that keeps your team productive and compliant.
               </p>
 
-              <ArrowButton text="Get Start Now" link="#" />
+              <ArrowButton text="Get Start Now" link="/tizzy-mail" />
             </div>
           </div>
 
