@@ -26,16 +26,16 @@ const Footer = () => {
               className={styles.footerLogo}
             />
             <div className={styles.socialLinksWrapper}>
-              <Link href={"#"}>
+              <Link href={"https://www.facebook.com/tizzycloud"} target="_blank">
                 <FaFacebookF />
               </Link>
-              <Link href={"#"}>
+              <Link href={"https://x.com/tizzy_cloud"} target="_blank">
                 <FaXTwitter />
               </Link>
-              <Link href={"#"}>
+              <Link href={"https://www.instagram.com/tizzy_cloud/"} target="_blank">
                 <FaInstagram />
               </Link>
-              <Link href={"#"}>
+              <Link href={"https://www.linkedin.com/company/tizzy-cloud/"} target="_blank">
                 <FaLinkedinIn />
               </Link>
               <Link href={"#"}>
@@ -46,18 +46,18 @@ const Footer = () => {
           <div className={styles.quickLinks}>
             <div>
               <h6>Tizzy Info</h6>
-              <Link href={"#"}>About</Link>
-              <Link href={"#"}>Contact</Link>
+              <Link href={"/about"}>About</Link>
+              <Link href={"/contact"}>Contact</Link>
             </div>
             <div>
               <h6>Solutions</h6>
-              <Link href={"#"}>Tizzy Mail</Link>
-              <Link href={"#"}>Google Workspace</Link>
-              <Link href={"#"}>Microsoft 365</Link>
+              <Link href={"/tizzy-mail"}>Tizzy Mail</Link>
+              <Link href={"/google-workspace"}>Google Workspace</Link>
+              <Link href={"/cloud-microsoft-365"}>Microsoft 365</Link>
             </div>
             <div>
               <h6>Support</h6>
-              <Link href={"#"}>Migration</Link>
+              <Link href={"/migration"}>Migration</Link>
             </div>
           </div>
           <div className={styles.footerDescContainer}>

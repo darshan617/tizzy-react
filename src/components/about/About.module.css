@@ -1,0 +1,24 @@
+.automatedPlatform {
+    width: 100%;
+    height: 100%;
+    float: left;
+    background-image: url("@/assets/images/automated.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    background-position: center center;
+    position: relative;
+}
+.automatedPlatform::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    right: 0;
+    left: 0;
+    background: var(--color-ffffff);
+    height: 100%;
+    opacity: 0.96;
+}
+.homeBanner{
+    height: calc(100vh - 280px);
+}

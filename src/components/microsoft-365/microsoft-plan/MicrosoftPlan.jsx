@@ -512,13 +512,13 @@ const MicrosoftPlan = () => {
   const [activeTab, setActiveTab] = React.useState('nav-monthly')
   const [copilotTeamsTab, setCopilotTeamsTab] = React.useState('with-teams')
   return (
-    <section className="workspace-plan-section pt-100 pb-100" id="pricing">
+    <section className="workspace-plan-section pt-100 pb-100"  >
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-xl-7 col-lg-9 col-md-12 col-12">
-            <div className="workspace-plan-title text-center">
+            <div className="workspace-plan-title text-center" id="pricing-microsoft">
               <h2
-                className="div-sub-title aos-init aos-animate"
+                className="div-sub-title aos-init aos-animate" 
                 data-aos="fade-up"
                 data-aos-easing="linear"
                 data-aos-duration="800"

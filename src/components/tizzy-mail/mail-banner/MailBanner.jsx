@@ -3,6 +3,7 @@ import Image from "next/image";
 import bannerImg from "@/assets/images/banner-img.png";
 import styles from "@/components/tizzy-mail/mail-banner/MailBanner.module.css";
 import { LuArrowUpRight } from "react-icons/lu";
+import Link from "next/link";
 
 const MailBanner = () => {
   return (
@@ -24,14 +25,19 @@ const MailBanner = () => {
                 handle commonly faced email issues.
               </p>
               <div className="d-flex flex-column flex-lg-row gap-5 mt-40">
-                <a href="#pricing" className="tp-btn-black">
+                <span onClick={() => {
+                  const pricing = document.getElementById("pricing");
+                  if (pricing) {
+                    pricing.scrollIntoView({ behavior: "smooth" });
+                  }
+                }} className="tp-btn-black" >
                   <span className="tp-btn-black-filter d-inline-flex align-items-center">
-                    <span className="tp-btn-black-text">View Pricing</span>
-                    <span className="tp-btn-black-circle">
+                    <span className="tp-btn-black-text" style={{ cursor: "pointer" }}>View Pricing</span>
+                    <span className="tp-btn-black-circle" style={{ cursor: "pointer" }}>
                       <LuArrowUpRight size={18} />
                     </span>
                   </span>
-                </a>
+                </span>
               </div>
 
               <div className="DedicatedSupport d-flex gap-5 mt-40">
