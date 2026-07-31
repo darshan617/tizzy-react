@@ -65,7 +65,7 @@ const Navbar = () => {
   const MANAGED_SERVICE_OPTIONS = [
     {
       label: "Migration",
-      link: "#",
+      link: "/migration",
     },
     {
       label: "Backup & Restore",
@@ -172,7 +172,7 @@ const Navbar = () => {
                 <Link href={"/tizzy-mail"}>Tizzy Mail</Link>
                 <Link href={"/cloud-microsoft-365"}>Microsoft 365</Link>
                 <Link href={"/google-workspace"}>Google Workspace</Link>
-                <Link href={"#"}>Migration</Link>
+                <Link href={"/migration"}>Migration</Link>
                 <CustomDropdown
                   isDropdownOpen={isDropdownOpen}
                   mainText={"Managed Services"}
@@ -265,7 +265,7 @@ const Navbar = () => {
             <div
               className={`${styles.workspaceRight} ${styles.workspaceRightDesktop} d-flex justify-content-end`}
             >
-              <ArrowButton text="Get Start Now" />
+              <ArrowButton text="Get Start Now" link="/contact" />
             </div>
           </div>
         </div>

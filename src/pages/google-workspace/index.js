@@ -75,7 +75,7 @@ const googleWorkspacePage = () => {
         description="Work smarter and collaborate better with powerful productivity tools."
         image={googleWorkspaceBanner}
         buttonText="Authorized Google Partner"
-        buttonLink="/google-workspace"
+        buttonLink="https://cloud.google.com/find-a-partner/partner/tizzy-cloud-computing-private-limited"
         bannerList={googleWorkspaceBannerList}
         backgroundColor="#d1e9e5"
         imageWidth={1600}

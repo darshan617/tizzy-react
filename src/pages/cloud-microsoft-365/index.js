@@ -74,7 +74,7 @@ const CloudMicrosoft = () => {
         description="Work smarter, collaborate faster, and stay secure with Microsoft 365tools."
         image={microsoftBanner}
         buttonText="Authorized Microsoft Partner"
-        buttonLink="/cloud-microsoft-365"
+        buttonLink="https://marketplace.microsoft.com/en-us/partners/052e1b67-9819-44bd-a613-7f6818c78543/overview/contact"
         bannerList={microsoftBannerList}
         backgroundColor="#d1e9e5"
         imageWidth={1000}

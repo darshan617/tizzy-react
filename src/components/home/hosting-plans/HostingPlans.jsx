@@ -82,10 +82,10 @@ const HostingPlans = () => {
                         </span>
 
                         <Link
-                          href={`/select-plan/${plan.id}`}
+                          href="/"
                           className={`${styles.BuyNow}`}
                         >
-                          Buy Now
+                          Enquire Now
                         </Link>
                       </div>
 

@@ -83,7 +83,7 @@ const plans = [
 
 const PricingPlans = () => {
   return (
-    <section className="workspace-plan-section pt-100 pb-100" id="pricing">
+    <section className="workspace-plan-section pt-100 pb-100" id="pricing" >
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-xl-7 col-lg-9 col-md-12 col-12">
