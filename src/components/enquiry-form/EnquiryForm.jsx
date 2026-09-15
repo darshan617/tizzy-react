@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "@/components/enquiry-form/EnquiryForm.module.css";
 const EnquiryForm = ({ show, onClose }) => {
+  const [phone, setPhone] = useState("");
   return (
     <div>
-      <div id="inquiryPanel" className={`${styles.InquiryPanel} ${styles.InquiryForm} ${show ? "active" : ""}`}>
+      <div
+        id="inquiryPanel"
+        className={`${styles.InquiryPanel} ${styles.InquiryForm} ${show ? "active" : ""}`}
+      >
         <div className={`${styles.InquiryHeader}`}>
           <h2 className="div-text color-0355ac mb-0">Connect with us</h2>
-          <button type="button" id="closeInquiry" className="close-btn" onClick={onClose}>
+          <button
+            type="button"
+            id="closeInquiry"
+            className="close-btn"
+            onClick={onClose}
+          >
             ×
           </button>
         </div>
@@ -37,7 +46,8 @@ const EnquiryForm = ({ show, onClose }) => {
               placeholder="Enter E-mail Id *"
             />
             <span
-              id="RequiredFieldValidator7"
+              id="Required
+              FieldValidator7"
               style={{ color: "Red", fontSize: "X-Small", display: "none" }}
             >
               Valid email is required.
@@ -53,12 +63,17 @@ const EnquiryForm = ({ show, onClose }) => {
           <div className="col-12 form-group">
             <input
               name="ctl00$txtqmobile"
-              type="text"
-              maxlength="12"
+              type="tel"
+              inputMode="numeric"
+              maxLength={10}
               id="txtqmobile"
               className="form-control"
               placeholder="Enter Phone Number *"
-              onkeypress="return isNumber(event)"
+              value={phone}
+              onChange={(e) => {
+                const value = e.target.value.replace(/\D/g, "");
+                setPhone(value);
+              }}
             />
             <span
               id="RequiredFieldValidator8"
@@ -82,7 +97,6 @@ const EnquiryForm = ({ show, onClose }) => {
               placeholder="Message / Requirement *"
               style={{ resize: "none" }}
               height="100px"
-              
             />
             <span
               id="RequiredFieldValidator9"
@@ -111,17 +125,21 @@ const EnquiryForm = ({ show, onClose }) => {
                   id="g-recaptcha-response"
                   name="g-recaptcha-response"
                   className="g-recaptcha-response"
-                  style={{ width: "250px", height: "80px", border: "1px solid rgb(193, 193, 193)", margin: "10px 25px", padding: "0px", resize: "none", display: "none" }}
+                  style={{
+                    width: "250px",
+                    height: "80px",
+                    border: "1px solid rgb(193, 193, 193)",
+                    margin: "10px 25px",
+                    padding: "0px",
+                    resize: "none",
+                    display: "none",
+                  }}
                 ></textarea>
               </div>
             </div>
           </div>
           <div className="col-12 mt-20 form-group mb-0">
-            <a
-              id="btnqsubmit"
-              className="tp-btn-black"
-              
-            >
+            <a id="btnqsubmit" className="tp-btn-black">
               <span className="tp-btn-black-filter d-inline-flex align-items-center">
                 <span className="tp-btn-black-text">Submit</span>
                 <span className="tp-btn-black-circle">

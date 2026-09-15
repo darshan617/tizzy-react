@@ -28,6 +28,7 @@ const PartnerWithUs = () => {
                 height={600}
                 className="img zoom"
                 alt="partners img"
+                style={{ width: "100%", height: "auto" }}
               />
             </div>
           </div>

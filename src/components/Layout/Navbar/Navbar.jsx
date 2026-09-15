@@ -145,7 +145,7 @@ const Navbar = () => {
                       color="var(--color-c0daf9)"
                       className="mx-1"
                     />
-                    <Link href="auth/login"> Log In</Link>
+                    <Link href="auth/login">Log In</Link>
                     <span> / </span>
                     <Link href="/auth/signup">Sign Up</Link>
                   </li>
@@ -160,10 +160,10 @@ const Navbar = () => {
           <div className="mainContainer">
             <div className={styles.mainMenuWrapper}>
               <Link href="/">
-              <Image
-                src={mainLogo}
-                className={styles.mainLogo}
-                width={800}
+                <Image
+                  src={mainLogo}
+                  className={styles.mainLogo}
+                  width={800}
                   height={800}
                   alt="logo"
                 />

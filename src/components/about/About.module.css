@@ -21,4 +21,10 @@
 }
 .homeBanner{
     height: calc(100vh - 280px);
+
+}
+
+.bannerImg img{
+    width: 100% ;
+    height: auto;
 }

@@ -59,7 +59,7 @@ const WhyChoose = () => {
             </div>
           </div>
         </div>
-        <div className="row mt-50 justify-content-end">
+        <div className="row mt-50 justify-content-end justify-content-md-center ">
           <div className="col-xl-8 col-lg-9 col-md-12 col-12">
             <div className="row justify-content-start">
               {whyChooseData.map((item, index) => (

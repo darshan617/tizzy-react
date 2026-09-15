@@ -8,10 +8,17 @@ import Aos from "aos";
 import { FaArrowUp } from "react-icons/fa";
 import { SlEnvolope } from "react-icons/sl";
 import EnquiryForm from "@/components/enquiry-form/EnquiryForm";
+import logo from "@/assets/Navbar/logo.png";
+import Image from "next/image";
 
 function InquiryButton({ onClick }) {
   return (
-    <button type="button" id="inquiryBtn" className="inquiry-sticky-btn" onClick={onClick}>
+    <button
+      type="button"
+      id="inquiryBtn"
+      className="inquiry-sticky-btn"
+      onClick={onClick}
+    >
       <span className="inquiry-icon">
         <SlEnvolope />
       </span>{" "}
@@ -42,21 +49,56 @@ function BackToTopButton() {
     </button>
   );
 }
+function Loader({ loading }) {
+  return (
+    <div id="loader" className={loading ? "" : "fade-out"}>
+      {" "}
+      <Image src={logo} alt="Tizzy Cloud Logo" className="logo" />{" "}
+      <div className="progress-container">
+        {" "}
+        <div
+          className="progress-bar"
+          id="progress"
+          style={{ width: "100%" }}
+        ></div>{" "}
+      </div>{" "}
+      <p className="loading-text">Loading...</p>{" "}
+    </div>
+  );
+}
 
 export default function App({ Component, pageProps, ...rest }) {
   const { store } = storeWrapper.useWrappedStore(rest);
   const [showEnquiryForm, setShowEnquiryForm] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     Aos.init({ duration: 1000, once: true });
+    const handleLoad = () => {
+      setTimeout(() => {
+        setLoading(false);
+      }, 500);
+    };
+    if (document.readyState === "complete") {
+      handleLoad();
+    } else {
+      window.addEventListener("load", handleLoad);
+    }
+    return () => {
+      window.removeEventListener("load", handleLoad);
+    };
   }, []);
 
   return (
     <Provider store={store}>
+      <Loader loading={loading} />
       <Component {...pageProps} />
       <InquiryButton onClick={() => setShowEnquiryForm(true)} />
       <BackToTopButton />
-      <EnquiryForm show={showEnquiryForm} onClose={() => setShowEnquiryForm(false)} />
+      <EnquiryForm
+        show={showEnquiryForm}
+        onClose={() => setShowEnquiryForm(false)}
+      />
       <style jsx global>{`
         .inquiry-sticky-btn {
           z-index: 9999;
@@ -76,9 +118,10 @@ export default function App({ Component, pageProps, ...rest }) {
         }
         @media (max-width: 500px) {
           .inquiry-sticky-btn {
-            bottom: 18px;
-            left: 18px;
-            padding: 10px 16px;
+            // bottom: 18px;
+            right: 0;
+            // padding: 10px 16px;
+            width: fit-content;
             font-size: 14px;
           }
         }

@@ -288,6 +288,45 @@ p {
   margin-bottom: 10px;
 }
 
+#loader.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+#loader {
+  position: fixed;
+  inset: 0;
+  background: var(--color-c0daf9);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.loading-text {
+  margin-top: 15px;
+  font-family: Arial, sans-serif;
+  color: var(--color-0355ac);
+  letter-spacing: 2px;
+}
+
+.progress-container {
+  width: 200px;
+  height: 6px;
+  background: var(--color-000000);
+  border-radius: 20px;
+  overflow: hidden;
+  margin-top: 25px;
+}
+.logo {
+  width: 200px;
+  height: auto;
+}
+
 .weight-Light {
   font-weight: var(--font-weight-Light);
 }
@@ -1330,7 +1369,7 @@ p {
   color: var(--color-000000);
   font-weight: var(--font-weight-Regular);
   text-align: left;
-  padding: 30px 100px 30px 30px;
+  /* padding: 30px 100px 30px 30px; */
   margin: 0;
   border: none;
   background: var(--color-f9fafc);
@@ -4373,7 +4412,7 @@ p {
 
   .home-banner-img {
     position: relative;
-    top: 30px;
+    /* top: 30px; */
   }
 
   .boost-business-section .banner-img {
