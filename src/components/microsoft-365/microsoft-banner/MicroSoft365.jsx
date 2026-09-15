@@ -32,7 +32,7 @@ const MicroSoft365 = ({
           style={{
             width: "100%",
             height: "100%",
-            objectFit,
+            objectFit, 
             objectPosition,
             margin: "0 auto",
           }}

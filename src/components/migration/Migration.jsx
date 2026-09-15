@@ -3,6 +3,7 @@ import React from "react";
 import bannerImg from "@/assets/images/about-img.jpg";
 import MigrationAutomatedPlatformImg from "@/assets/images/Migration-Automated-Platform.jpg";
 import CloudyImg from "@/assets/images/cloudy.svg";
+import styles from '@/components/about/About.module.css'
 
 const Migration = () => {
   return (
@@ -19,7 +20,7 @@ const Migration = () => {
               data-aos-easing="linear"
               data-aos-duration="800"
             >
-              <div className="banner-img img-zoom">
+              <div className={`${styles.bannerImg} banner-img img-zoom`}>
                 <Image
                   src={bannerImg}
                   className="img zoom"
@@ -169,7 +170,7 @@ const Migration = () => {
             </div>
             <div className="col-lg-6 col-md-12 col-12">
               <div
-                className="banner-img img-zoom aos-init aos-animate"
+                className={`${styles.bannerImg} banner-img img-zoom aos-init aos-animate`}
                 data-aos="zoom-in"
                 data-aos-easing="linear"
                 data-aos-duration="1200"
