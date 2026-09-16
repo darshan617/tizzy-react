@@ -12,10 +12,9 @@ const MicroSoft365 = ({
   backgroundColor,
   imageWidth,
   imageHeight,
-  objectFit = "fill",
+  objectFit = "cover",
   objectPosition = "end",
   textColor = "black",
-  
 }) => {
   return (
     <section className="home-banner position-relative">
@@ -32,7 +31,7 @@ const MicroSoft365 = ({
           style={{
             width: "100%",
             height: "100%",
-            objectFit, 
+            objectFit,
             objectPosition,
             margin: "0 auto",
           }}
@@ -42,7 +41,9 @@ const MicroSoft365 = ({
         <div className="row h-100">
           <div className="col-lg-6 col-md-12 col-12 d-flex align-items-center">
             <div className="banner-text">
-              <h1 className="title mb-0" style={{ color: textColor }}>{title}</h1>
+              <h1 className="title mb-0" style={{ color: textColor }}>
+                {title}
+              </h1>
               <p className="p-content">{description}</p>
               <ul
                 className="workspace-list mt-40 aos-init aos-animate"

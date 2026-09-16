@@ -142,10 +142,7 @@ const ContactInfo = () => {
                         title="Google Reviews"
                         target="_blank"
                       >
-                        <Image
-                          src={GoogleReviewsImg}
-                          alt="Google Reviews"
-                        />
+                        <Image src={GoogleReviewsImg} alt="Google Reviews" />
                       </Link>
                     </li>
                     <li>

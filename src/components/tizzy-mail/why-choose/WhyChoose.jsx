@@ -8,13 +8,11 @@ const WhyChoose = () => {
       title: "Fast Performance",
       description:
         "Rapid synchronised email experiences with any email clients, such as Outlook and Thunderbird. This will ensure the sending and receiving of emails with large attachments using our optimised POP, IMAP, and SMTP.",
-     
     },
     {
       title: "Special Security Measures",
       description:
         "Strong protection for your business communications along with advanced safeguards, such as SSL/TLS encryption, DKIM, SPF, etc., and spam and antivirus filtering. All these measures keep your data safe from threats and illegitimate access.",
-      
     },
     {
       title: "Guaranteed Backup of Data",
@@ -25,13 +23,11 @@ const WhyChoose = () => {
       title: "Simple Webmail Interface",
       description:
         "An easily accessible webmail platform where your email can be equipped with drag-and-drop, auto-complete addressing, and a search engine fully indexed to make information speedy.",
-      
     },
     {
       title: "Scalable Storage Options",
       description:
         "Users can select the plan that best suits their business, ranging from 10GB to 1 TB of storage per user.",
-     
     },
   ];
 

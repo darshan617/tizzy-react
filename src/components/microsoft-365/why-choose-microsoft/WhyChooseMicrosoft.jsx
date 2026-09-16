@@ -76,7 +76,9 @@ const WhyChooseMicrosoft = () => {
           </div>
         </div>
       </section>
-      <section className={`${styles.getStartedSection} position-relative pt-100 pb-100`}>
+      <section
+        className={`${styles.getStartedSection} position-relative pt-100 pb-100`}
+      >
         <div className="microsoft-banner">
           <Image
             src={getStartedImg}
@@ -112,7 +114,8 @@ const WhyChooseMicrosoft = () => {
                 </p>
                 <span
                   onClick={() => {
-                    const pricingMicrosoft = document.getElementById("pricing-microsoft");
+                    const pricingMicrosoft =
+                      document.getElementById("pricing-microsoft");
                     if (pricingMicrosoft) {
                       pricingMicrosoft.scrollIntoView({ behavior: "smooth" });
                     }
@@ -123,8 +126,16 @@ const WhyChooseMicrosoft = () => {
                   data-aos-duration="1400"
                 >
                   <span className="tp-btn-black-filter d-inline-flex align-items-center">
-                    <span className="tp-btn-black-text" style={{ cursor: "pointer" }}>View Pricing</span>
-                    <span className="tp-btn-black-circle" style={{ cursor: "pointer" }}>
+                    <span
+                      className="tp-btn-black-text"
+                      style={{ cursor: "pointer" }}
+                    >
+                      View Pricing
+                    </span>
+                    <span
+                      className="tp-btn-black-circle"
+                      style={{ cursor: "pointer" }}
+                    >
                       <svg
                         width="10"
                         height="10"

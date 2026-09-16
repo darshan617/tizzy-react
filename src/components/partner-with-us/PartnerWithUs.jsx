@@ -88,10 +88,7 @@ const PartnerWithUs = () => {
                 data-aos-easing="linear"
                 data-aos-duration="1200"
               >
-                <Image
-                  src={PartnerCheck}
-                  alt="partners check"
-                />
+                <Image src={PartnerCheck} alt="partners check" />
                 <h4 className="div-text">
                   Get complete backend assistance from our expert team.
                 </h4>

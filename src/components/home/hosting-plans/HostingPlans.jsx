@@ -81,10 +81,7 @@ const HostingPlans = () => {
                           /Per user /Per Year
                         </span>
 
-                        <Link
-                          href="/"
-                          className={`${styles.BuyNow}`}
-                        >
+                        <Link href="/" className={`${styles.BuyNow}`}>
                           Enquire Now
                         </Link>
                       </div>

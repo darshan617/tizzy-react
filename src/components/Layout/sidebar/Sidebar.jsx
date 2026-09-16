@@ -117,12 +117,18 @@ const Sidebar = ({
               </Link>
             </li>
             <li>
-              <Link href={"/cloud-microsoft-365"} className={styles.sidebarMenuLinks}>
+              <Link
+                href={"/cloud-microsoft-365"}
+                className={styles.sidebarMenuLinks}
+              >
                 Microsoft 365
               </Link>
             </li>
             <li>
-              <Link href={"/google-workspace"} className={styles.sidebarMenuLinks}>
+              <Link
+                href={"/google-workspace"}
+                className={styles.sidebarMenuLinks}
+              >
                 Google Workspace
               </Link>
             </li>

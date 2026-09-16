@@ -1,89 +1,89 @@
-import Link from 'next/link'
-import React from 'react'
-import { FaCheckCircle } from 'react-icons/fa'
-import styles from '@/components/tizzy-mail/pricing-plan/PricingPlans.module.css'
+import Link from "next/link";
+import React from "react";
+import { FaCheckCircle } from "react-icons/fa";
+import styles from "@/components/tizzy-mail/pricing-plan/PricingPlans.module.css";
 
 const plans = [
   {
-    aosClass: 'aos-init aos-animate',
-    aosDuration: '600',
-    title: 'Tizzy® Mail 10 GB',
-    label: 'Basic',
-    price: '₹792',
+    aosClass: "aos-init aos-animate",
+    aosDuration: "600",
+    title: "Tizzy® Mail 10 GB",
+    label: "Basic",
+    price: "₹792",
     features: [
-      'Space per Email ID: 10 GB',
-      'User Friendly Webmail Access',
-      'Email Client Setup',
-      'Mobile Webmail',
-      '50 GB Data Transfer Bandwidth per Month',
-      '150 Outgoing Emails Limit per Hour',
+      "Space per Email ID: 10 GB",
+      "User Friendly Webmail Access",
+      "Email Client Setup",
+      "Mobile Webmail",
+      "50 GB Data Transfer Bandwidth per Month",
+      "150 Outgoing Emails Limit per Hour",
     ],
   },
   {
-    aosClass: 'aos-init aos-animate',
-    aosDuration: '800',
-    title: 'Tizzy® Mail Silver – 30 GB',
-    label: 'Silver',
-    price: '₹1716',
+    aosClass: "aos-init aos-animate",
+    aosDuration: "800",
+    title: "Tizzy® Mail Silver – 30 GB",
+    label: "Silver",
+    price: "₹1716",
     features: [
-      'Space per Email ID: 30 GB',
-      'User Friendly Webmail Access',
-      'Email Client Setup',
-      'Mobile Webmail',
-      '100 GB Data Transfer Bandwidth per Month',
-      '250 Outgoing Emails Limit per Hour',
+      "Space per Email ID: 30 GB",
+      "User Friendly Webmail Access",
+      "Email Client Setup",
+      "Mobile Webmail",
+      "100 GB Data Transfer Bandwidth per Month",
+      "250 Outgoing Emails Limit per Hour",
     ],
   },
   {
-    aosClass: 'aos-init aos-animate',
-    aosDuration: '1000',
-    title: 'Tizzy® Mail Platinum – 50 GB',
-    label: 'Platinum',
-    price: '₹2850 ',
+    aosClass: "aos-init aos-animate",
+    aosDuration: "1000",
+    title: "Tizzy® Mail Platinum – 50 GB",
+    label: "Platinum",
+    price: "₹2850 ",
     features: [
-      'Space per Email ID: 50 GB',
-      'User Friendly Webmail Access',
-      'Email Client Setup',
-      'Mobile Webmail',
-      '200 GB Data Transfer Bandwidth per Month',
-      '250 Outgoing Emails Limit per Hour',
+      "Space per Email ID: 50 GB",
+      "User Friendly Webmail Access",
+      "Email Client Setup",
+      "Mobile Webmail",
+      "200 GB Data Transfer Bandwidth per Month",
+      "250 Outgoing Emails Limit per Hour",
     ],
   },
   {
-    aosClass: 'aos-init',
-    aosDuration: '1200',
-    title: 'Tizzy® Mail Enterprise – 100 GB',
-    label: 'Enterprise',
-    price: '₹5000',
+    aosClass: "aos-init",
+    aosDuration: "1200",
+    title: "Tizzy® Mail Enterprise – 100 GB",
+    label: "Enterprise",
+    price: "₹5000",
     features: [
-      'Space per Email ID: 100 GB',
-      'User Friendly Webmail Access',
-      'Email Client Setup',
-      'Mobile Webmail',
-      '300 GB Data Transfer Bandwidth per Month',
-      '250 Outgoing Emails Limit per Hour',
+      "Space per Email ID: 100 GB",
+      "User Friendly Webmail Access",
+      "Email Client Setup",
+      "Mobile Webmail",
+      "300 GB Data Transfer Bandwidth per Month",
+      "250 Outgoing Emails Limit per Hour",
     ],
   },
   {
-    aosClass: 'aos-init',
-    aosDuration: '1400',
-    title: 'Tizzy® Mail Corporate – 1 TB',
-    label: 'Corporate',
-    price: '₹8000',
+    aosClass: "aos-init",
+    aosDuration: "1400",
+    title: "Tizzy® Mail Corporate – 1 TB",
+    label: "Corporate",
+    price: "₹8000",
     features: [
-      'Space per Email ID: 1 TB',
-      'User Friendly Webmail Access',
-      'Email Client Setup',
-      'Mobile Webmail',
-      '300 GB Data Transfer Bandwidth per Month',
-      '250 Outgoing Emails Limit per Hour',
+      "Space per Email ID: 1 TB",
+      "User Friendly Webmail Access",
+      "Email Client Setup",
+      "Mobile Webmail",
+      "300 GB Data Transfer Bandwidth per Month",
+      "250 Outgoing Emails Limit per Hour",
     ],
   },
-]
+];
 
 const PricingPlans = () => {
   return (
-    <section className="workspace-plan-section pt-100 pb-100" id="pricing" >
+    <section className="workspace-plan-section pt-100 pb-100" id="pricing">
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-xl-7 col-lg-9 col-md-12 col-12">
@@ -94,7 +94,8 @@ const PricingPlans = () => {
                 data-aos-easing="linear"
                 data-aos-duration="800"
               >
-                Tizzy® Mail INDIA <br /> Cloud Business Email Hosting Plans on Amazon AWS
+                Tizzy® Mail INDIA <br /> Cloud Business Email Hosting Plans on
+                Amazon AWS
               </h2>
               <p
                 data-aos="fade-up"
@@ -102,7 +103,8 @@ const PricingPlans = () => {
                 data-aos-duration="1000"
                 className="aos-init aos-animate"
               >
-                AI &amp; Machine Learning–based Email Security with Tizzy Mail Enterprise &amp; Corporate Plans.
+                AI &amp; Machine Learning–based Email Security with Tizzy Mail
+                Enterprise &amp; Corporate Plans.
               </p>
             </div>
           </div>
@@ -122,11 +124,19 @@ const PricingPlans = () => {
                   <h3 className="div-text mb-0 weight-Bold">{plan.title}</h3>
                 </div>
                 <div className="plans-details">
-                  <h4 className="small-text mb-0 weight-SemiBold most-popular">{plan.label}</h4>
+                  <h4 className="small-text mb-0 weight-SemiBold most-popular">
+                    {plan.label}
+                  </h4>
                   <div className="plans-details-text">
-                    <h5 className="div-title mb-0 weight-SemiBold">{plan.price}</h5>
-                    <span className="extra-small-text d-block mb-0">User/Month</span>
-                    <span className="extra-small-text d-block mb-0">GST 18% Additional</span>
+                    <h5 className="div-title mb-0 weight-SemiBold">
+                      {plan.price}
+                    </h5>
+                    <span className="extra-small-text d-block mb-0">
+                      User/Month
+                    </span>
+                    <span className="extra-small-text d-block mb-0">
+                      GST 18% Additional
+                    </span>
                   </div>
                   <div className="plans-details-text microsoft-360-buy-btn">
                     <button
@@ -139,22 +149,27 @@ const PricingPlans = () => {
                     </button>
                   </div>
                   <div className="qty-wrapper-bg features">
-                    <h6 className="p-content mb-0 weight-SemiBold">Top Features</h6>
+                    <h6 className="p-content mb-0 weight-SemiBold">
+                      Top Features
+                    </h6>
                   </div>
                   <div className="more-details-box">
                     <ul className="plans-details-list">
                       {plan.features.map((feature, i) => (
                         <li key={i}>
-                          <FaCheckCircle size={16} className={`${styles.CheckIcon} me-2`}/>
+                          <FaCheckCircle
+                            size={16}
+                            className={`${styles.CheckIcon} me-2`}
+                          />
                           {feature}
                         </li>
                       ))}
                     </ul>
                     <div className="plans-details-text-bottom">
-                      
-                        <Link href="#"
+                      <Link
+                        href="#"
                         className="more-details p-content"
-                        style={{ display: 'none' }}
+                        style={{ display: "none" }}
                       >
                         See All Features
                       </Link>
@@ -167,7 +182,7 @@ const PricingPlans = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default PricingPlans
+export default PricingPlans;

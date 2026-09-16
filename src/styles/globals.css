@@ -4937,8 +4937,12 @@ p {
   .data-backup-bottom {
     margin-bottom: 20px;
   }
+  
   .transfer-modal .modal-dialog {
     max-width: 90%;
+  }
+  .testimonial-right{
+    width: 100%;
   }
 }
 
@@ -5127,7 +5131,7 @@ p {
 
   .testimonial-right {
     width: 100%;
-    float: left;
+    /* float: left; */
     margin-top: 30px;
   }
 
@@ -6979,6 +6983,8 @@ select.form-input-custom {
     max-width: 300px;
   }
 }
+
+
 
 /* ── KYC Form Utilities ── */
 .kyc-single-col {

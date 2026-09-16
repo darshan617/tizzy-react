@@ -3,7 +3,7 @@ import React from "react";
 import bannerImg from "@/assets/images/about-img.jpg";
 import MigrationAutomatedPlatformImg from "@/assets/images/Migration-Automated-Platform.jpg";
 import CloudyImg from "@/assets/images/cloudy.svg";
-import styles from '@/components/about/About.module.css'
+import styles from "@/components/about/About.module.css";
 
 const Migration = () => {
   return (
