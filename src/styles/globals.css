@@ -304,7 +304,9 @@ p {
   z-index: 99999;
   opacity: 1;
   visibility: visible;
-  transition: opacity 0.8s ease, visibility 0.8s ease;
+  transition:
+    opacity 0.8s ease,
+    visibility 0.8s ease;
 }
 
 .loading-text {
@@ -540,15 +542,6 @@ p {
   margin-top: 25px;
 }
 
-.progress-bar {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, #1e58b4, #ff3b30, #f1c40f, #2ecc71);
-  background-size: 300% 100%;
-  animation: gradientMove 2s linear infinite;
-  transition: width 0.3s ease;
-}
-
 .loading-text {
   margin-top: 15px;
   font-family: Arial, sans-serif;
@@ -556,18 +549,24 @@ p {
   letter-spacing: 2px;
 }
 
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #1e58b4, #ff3b30, #f1c40f, #2ecc71, #1e58b4);
+  background-size: 300% 100%;
+  animation: gradientMove 2s linear infinite;
+  transition: width 0.3s ease;
+}
+
 @keyframes gradientMove {
   0% {
-    background-position: 0% 50%;
+    background-position: 0% 0%;
   }
-
   100% {
-    background-position: 100% 50%;
+    background-position: 300% 0%;
   }
 }
 
-/* loader css */
-/* top-header */
 .top-header {
   background-color: var(--color-1e58b4);
   width: 100%;
@@ -4937,11 +4936,11 @@ p {
   .data-backup-bottom {
     margin-bottom: 20px;
   }
-  
+
   .transfer-modal .modal-dialog {
     max-width: 90%;
   }
-  .testimonial-right{
+  .testimonial-right {
     width: 100%;
   }
 }
@@ -6983,8 +6982,6 @@ select.form-input-custom {
     max-width: 300px;
   }
 }
-
-
 
 /* ── KYC Form Utilities ── */
 .kyc-single-col {
