@@ -22,7 +22,7 @@ const googleWorkspaceBannerList = [
     ),
   },
   {
-    text: "Professional business email with your domain",
+    text: "Easy communication and team collaboration",
     icon: (
       <BsCheckCircleFill
         size={18}
@@ -32,7 +32,7 @@ const googleWorkspaceBannerList = [
     ),
   },
   {
-    text: "Professional business email with your domain",
+    text: "Google AI to boost productivity",
     icon: (
       <BsCheckCircleFill
         size={18}
@@ -42,7 +42,7 @@ const googleWorkspaceBannerList = [
     ),
   },
   {
-    text: "Professional business email with your domain",
+    text: "Strong security and privacy controls",
     icon: (
       <BsCheckCircleFill
         size={18}

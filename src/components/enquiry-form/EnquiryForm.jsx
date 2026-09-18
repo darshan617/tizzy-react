@@ -1,9 +1,99 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 import styles from "@/components/enquiry-form/EnquiryForm.module.css";
-const EnquiryForm = ({ show, onClose }) => {
+import { usePathname, useRouter } from "next/navigation";
+import { SlEnvolope } from "react-icons/sl";
+
+const SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+
+const EnquiryForm = () => {
+  const [show, setShow] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState("");
+  const [captchaToken, setCaptchaToken] = useState(null);
+  const [errors, setErrors] = useState({});
+  const [submitting, setSubmitting] = useState(false);
+
+  const recaptchaRef = useRef(null);
+  const pathname = usePathname();
+  const router = useRouter();
+
+  if (pathname === "/thank-you") return null;
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const phoneRegex = /^[0-9]{10}$/;
+
+  const validate = () => {
+    const newErrors = {};
+
+    if (!name.trim()) newErrors.name = "name is required.";
+
+    if (!email.trim()) newErrors.email = "Valid email is required.";
+    else if (!emailRegex.test(email))
+      newErrors.email = "Please enter valid email_id.";
+
+    if (!phone.trim()) newErrors.phone = "contact no is required.";
+    else if (!phoneRegex.test(phone))
+      newErrors.phone = "Enter a valid 10-digit mobile number!";
+
+    if (!message.trim()) newErrors.message = "Please, leave us a message.";
+
+    if (!captchaToken)
+      newErrors.captcha = "Please verify that you are not a robot.";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async () => {
+    if (!validate()) return;
+
+    setSubmitting(true);
+    try {
+      const res = await fetch("/api/enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          email,
+          phone,
+          message,
+          captchaToken,
+        }),
+      });
+
+      if (!res.ok) throw new Error("Submission failed");
+
+      setShow(false);
+      router.push("/thank-you");
+    } catch (err) {
+      setErrors((prev) => ({
+        ...prev,
+        form: "Something went wrong. Please try again.",
+      }));
+    } finally {
+      setSubmitting(false);
+      recaptchaRef.current?.reset();
+      setCaptchaToken(null);
+    }
+  };
+
   return (
-    <div>
+    <>
+      <button
+        type="button"
+        id="inquiryBtn"
+        className="inquiry-sticky-btn"
+        onClick={() => setShow(true)}
+      >
+        <span className="inquiry-icon">
+          <SlEnvolope />
+        </span>{" "}
+        Inquiry Now
+      </button>
+
       <div
         id="inquiryPanel"
         className={`${styles.InquiryPanel} ${styles.InquiryForm} ${show ? "active" : ""}`}
@@ -14,7 +104,7 @@ const EnquiryForm = ({ show, onClose }) => {
             type="button"
             id="closeInquiry"
             className="close-btn"
-            onClick={onClose}
+            onClick={() => setShow(false)}
           >
             ×
           </button>
@@ -28,13 +118,17 @@ const EnquiryForm = ({ show, onClose }) => {
               id="txtqName"
               className="form-control"
               placeholder="Enter Name *"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
-            <span
-              id="RequiredFieldValidator5"
-              style={{ color: "Red", fontSize: "X-Small", display: "none" }}
-            >
-              name is required.
-            </span>
+            {errors.name && (
+              <span
+                id="RequiredFieldValidator5"
+                style={{ color: "Red", fontSize: "X-Small" }}
+              >
+                {errors.name}
+              </span>
+            )}
           </div>
 
           <div className="col-md-12 form-group">
@@ -44,20 +138,17 @@ const EnquiryForm = ({ show, onClose }) => {
               id="txtqemail"
               className="form-control"
               placeholder="Enter E-mail Id *"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
-            <span
-              id="Required
-              FieldValidator7"
-              style={{ color: "Red", fontSize: "X-Small", display: "none" }}
-            >
-              Valid email is required.
-            </span>
-            <span
-              id="RegularExpressionValidator2"
-              style={{ color: "Red", fontSize: "X-Small", display: "none" }}
-            >
-              Please enter valid email_id.
-            </span>
+            {errors.email && (
+              <span
+                id="RequiredFieldValidator7"
+                style={{ color: "Red", fontSize: "X-Small" }}
+              >
+                {errors.email}
+              </span>
+            )}
           </div>
 
           <div className="col-12 form-group">
@@ -75,18 +166,14 @@ const EnquiryForm = ({ show, onClose }) => {
                 setPhone(value);
               }}
             />
-            <span
-              id="RequiredFieldValidator8"
-              style={{ color: "Red", fontSize: "X-Small", display: "none" }}
-            >
-              contact no is required.
-            </span>
-            <span
-              id="RegularExpressionValidator3"
-              style={{ color: "Red", display: "none" }}
-            >
-              Enter a valid 10-digit mobile number!
-            </span>
+            {errors.phone && (
+              <span
+                id="RegularExpressionValidator3"
+                style={{ color: "Red", fontSize: "X-Small" }}
+              >
+                {errors.phone}
+              </span>
+            )}
           </div>
 
           <div className="col-12 form-group">
@@ -96,52 +183,58 @@ const EnquiryForm = ({ show, onClose }) => {
               className="form-control"
               placeholder="Message / Requirement *"
               style={{ resize: "none" }}
-              height="100px"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
             />
-            <span
-              id="RequiredFieldValidator9"
-              style={{ color: "Red", fontSize: "X-Small", display: "none" }}
-            >
-              Please,leave us a message.
-            </span>
+            {errors.message && (
+              <span
+                id="RequiredFieldValidator9"
+                style={{ color: "Red", fontSize: "X-Small" }}
+              >
+                {errors.message}
+              </span>
+            )}
           </div>
+
           <div className="col-12 form-group">
             <div id="recaptchaQuickEnquiry">
-              <div style={{ width: "304px", height: "78px" }}>
-                <div>
-                  <iframe
-                    title="reCAPTCHA"
-                    width="304"
-                    height="78"
-                    role="presentation"
-                    name="a-39t4khcizwnb"
-                    frameborder="0"
-                    scrolling="no"
-                    sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation"
-                    src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6Lf1gnYaAAAAAGxhEvL6V4DAqQxjgGZrXthjAbbq&amp;co=aHR0cHM6Ly93d3cudGl6enljbG91ZC5jb206NDQz&amp;hl=en-GB&amp;v=A7KpaEASfhDcK0nXxgQEyyYv&amp;size=normal&amp;anchor-ms=20000&amp;execute-ms=30000&amp;cb=4hh49anjq6c7"
-                  ></iframe>
-                </div>
-                <textarea
-                  id="g-recaptcha-response"
-                  name="g-recaptcha-response"
-                  className="g-recaptcha-response"
-                  style={{
-                    width: "250px",
-                    height: "80px",
-                    border: "1px solid rgb(193, 193, 193)",
-                    margin: "10px 25px",
-                    padding: "0px",
-                    resize: "none",
-                    display: "none",
-                  }}
-                ></textarea>
-              </div>
+              <ReCAPTCHA
+                ref={recaptchaRef}
+                sitekey={SITE_KEY}
+                onChange={(token) => {
+                  setCaptchaToken(token);
+                  setErrors((prev) => ({ ...prev, captcha: undefined }));
+                }}
+                onExpired={() => setCaptchaToken(null)}
+              />
             </div>
+            {errors.captcha && (
+              <span style={{ color: "Red", fontSize: "X-Small" }}>
+                {errors.captcha}
+              </span>
+            )}
           </div>
+
+          {errors.form && (
+            <div className="col-12 form-group">
+              <span style={{ color: "Red", fontSize: "X-Small" }}>
+                {errors.form}
+              </span>
+            </div>
+          )}
+
           <div className="col-12 mt-20 form-group mb-0">
-            <a id="btnqsubmit" className="tp-btn-black">
+            <button
+              type="button"
+              id="btnqsubmit"
+              className="tp-btn-black"
+              onClick={handleSubmit}
+              disabled={submitting}
+            >
               <span className="tp-btn-black-filter d-inline-flex align-items-center">
-                <span className="tp-btn-black-text">Submit</span>
+                <span className="tp-btn-black-text">
+                  {submitting ? "Submitting..." : "Submit"}
+                </span>
                 <span className="tp-btn-black-circle">
                   <svg
                     width="10"
@@ -153,18 +246,18 @@ const EnquiryForm = ({ show, onClose }) => {
                     <path
                       d="M1 9L9 1M9 1H1M9 1V9"
                       stroke="currentcolor"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     ></path>
                   </svg>
                 </span>
               </span>
-            </a>
+            </button>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

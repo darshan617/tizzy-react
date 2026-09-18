@@ -1,0 +1,48 @@
+.thankyouWrapper {
+  min-height: calc(100vh - 130px);
+  background-image: url("../../assets//images//thankyou-bg.png");
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-direction: column;
+}
+
+.thankyouWrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #e1e1e140;
+}
+
+.icon {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: #f4f8ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon svg {
+  width: 44px;
+  height: 44px;
+  color: #0355ac;
+}
+
+.thankYouTitle {
+  color: #1f2937;
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+.para {
+  color: #000000;
+  margin-bottom: 22px;
+  font-size: 22px;
+  line-height: 32px;
+}

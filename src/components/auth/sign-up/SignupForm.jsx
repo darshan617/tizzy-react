@@ -29,7 +29,6 @@ const SignupForm = () => {
     company_name: "",
     company_address: "",
     terms_and_conditions: false,
-
     country: "",
     state: "",
     city: "",

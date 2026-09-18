@@ -9,7 +9,6 @@ import { useEffect, useState } from "react";
 
 import Aos from "aos";
 import { FaArrowUp } from "react-icons/fa";
-import { SlEnvolope } from "react-icons/sl";
 
 import EnquiryForm from "@/components/enquiry-form/EnquiryForm";
 
@@ -17,22 +16,6 @@ import logo from "@/assets/Navbar/logo.png";
 import tizzyLogo from "@/assets/Navbar/tizzy-logo.png"
 import Image from "next/image";
 import Head from "next/head";
-
-function InquiryButton({ onClick }) {
-  return (
-    <button
-      type="button"
-      id="inquiryBtn"
-      className="inquiry-sticky-btn"
-      onClick={onClick}
-    >
-      <span className="inquiry-icon">
-        <SlEnvolope />
-      </span>{" "}
-      Inquiry Now
-    </button>
-  );
-}
 
 function BackToTopButton() {
   const [show, setShow] = useState(false);
@@ -81,7 +64,6 @@ function Loader({ loading }) {
 export default function App({ Component, pageProps, ...rest }) {
   const { store } = storeWrapper.useWrappedStore(rest);
 
-  const [showEnquiryForm, setShowEnquiryForm] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -117,12 +99,8 @@ export default function App({ Component, pageProps, ...rest }) {
       <Provider store={store}>
         <Loader loading={loading} />
         <Component {...pageProps} />
-        <InquiryButton onClick={() => setShowEnquiryForm(true)} />
+        <EnquiryForm />
         <BackToTopButton />
-        <EnquiryForm
-          show={showEnquiryForm}
-          onClose={() => setShowEnquiryForm(false)}
-        />
 
         <style jsx global>{`
           .inquiry-sticky-btn {
@@ -146,9 +124,7 @@ export default function App({ Component, pageProps, ...rest }) {
 
           @media (max-width: 500px) {
             .inquiry-sticky-btn {
-              /* bottom: 18px; */
               right: 0;
-              /* padding: 10px 16px; */
               width: fit-content;
               font-size: 14px;
             }
