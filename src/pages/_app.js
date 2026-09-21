@@ -1,17 +1,12 @@
 import { storeWrapper } from "@/redux/store";
-
 import "bootstrap/dist/css/bootstrap.min.css";
 import "aos/dist/aos.css";
 import "@/styles/globals.css";
-
 import { Provider } from "react-redux";
 import { useEffect, useState } from "react";
-
 import Aos from "aos";
 import { FaArrowUp } from "react-icons/fa";
-
 import EnquiryForm from "@/components/enquiry-form/EnquiryForm";
-
 import logo from "@/assets/Navbar/logo.png";
 import tizzyLogo from "@/assets/Navbar/tizzy-logo.png"
 import Image from "next/image";
@@ -46,7 +41,7 @@ function BackToTopButton() {
 function Loader({ loading }) {
   return (
     <div id="loader" className={loading ? "" : "fade-out"}>
-      <Image src={logo} alt="Fortune Group Logo" className="logo" />
+      <Image src={logo} alt="logo" className="logo" />
 
       <div className="progress-container">
         <div
