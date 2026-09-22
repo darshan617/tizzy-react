@@ -185,6 +185,7 @@ const EnquiryForm = () => {
               style={{ resize: "none" }}
               value={message}
               onChange={(e) => setMessage(e.target.value)}
+              rows={3}
             />
             {errors.message && (
               <span
@@ -196,7 +197,7 @@ const EnquiryForm = () => {
             )}
           </div>
 
-          <div className="col-12 form-group">
+          {/* <div className="col-12 form-group">
             <div id="recaptchaQuickEnquiry">
               <ReCAPTCHA
                 ref={recaptchaRef}
@@ -213,7 +214,7 @@ const EnquiryForm = () => {
                 {errors.captcha}
               </span>
             )}
-          </div>
+          </div> */}
 
           {errors.form && (
             <div className="col-12 form-group">
