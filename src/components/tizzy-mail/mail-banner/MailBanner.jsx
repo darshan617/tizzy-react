@@ -17,23 +17,34 @@ const MailBanner = () => {
             <div className={`banner-text ${styles.bannerText}`}>
               <h1 className="title mb-0">Tizzy® Mail</h1>
               <p className="p-content">
-                Tizzy® Mail users will never have to worry about delayed
-                emails, missing incoming mails, spam issues, IP blacklisting,
+                Tizzy® Mail users will never have to worry about delayed emails,
+                missing incoming mails, spam issues, IP blacklisting,
                 DNS-related problems, email spoofing, or data backup and
                 restore.
                 <br /> All our plans are designed with robust solutions to
                 handle commonly faced email issues.
               </p>
               <div className="d-flex flex-column flex-lg-row gap-5 mt-40">
-                <span onClick={() => {
-                  const pricing = document.getElementById("pricing");
-                  if (pricing) {
-                    pricing.scrollIntoView({ behavior: "smooth" });
-                  }
-                }} className="tp-btn-black" >
+                <span
+                  onClick={() => {
+                    const pricing = document.getElementById("pricing");
+                    if (pricing) {
+                      pricing.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }}
+                  className="tp-btn-black"
+                >
                   <span className="tp-btn-black-filter d-inline-flex align-items-center">
-                    <span className="tp-btn-black-text" style={{ cursor: "pointer" }}>View Pricing</span>
-                    <span className="tp-btn-black-circle" style={{ cursor: "pointer" }}>
+                    <span
+                      className="tp-btn-black-text"
+                      style={{ cursor: "pointer" }}
+                    >
+                      View Pricing
+                    </span>
+                    <span
+                      className="tp-btn-black-circle"
+                      style={{ cursor: "pointer" }}
+                    >
                       <LuArrowUpRight size={18} />
                     </span>
                   </span>
@@ -85,7 +96,6 @@ const MailBanner = () => {
                 alt="banner img"
                 width={500}
                 height={500}
-
               />
             </div>
           </div>

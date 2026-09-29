@@ -1,0 +1,57 @@
+.authWrapper {
+    background-color: #f4f7f6;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 60px 20px;
+    display: flex;
+}
+
+.authCard {
+    background: #fff;
+    border-radius: 11px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    overflow: hidden;
+    box-shadow: 0 10px 40px #00000014;
+}
+
+.authRightContent {
+    z-index: 2;
+    text-align: center;
+    position: relative;
+}
+
+.authRight {
+    background: url(../../../assets/images/Register.png) no-repeat center top;
+    background-size: cover;
+    position: relative;
+    padding: 4rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.authRightContent ul {
+    text-align: left;
+    margin-top: .5rem;
+    padding: 0;
+    list-style: none;
+    display: inline-block;
+}
+
+.authRightContent ul li {
+    font-size: 0.95rem;
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    color: #777;
+    font-weight: 500;
+}
+
+@media(max-width: 767px){
+    .authRight{
+        display: none;
+    }
+}

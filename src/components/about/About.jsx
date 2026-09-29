@@ -31,7 +31,7 @@ const About = () => {
               data-aos-easing="linear"
               data-aos-duration="800"
             >
-              <div className="banner-img img-zoom">
+              <div className={`${styles.bannerImg} banner-img img-zoom`}>
                 <Image
                   src={AboutImg}
                   className="img zoom"
@@ -50,7 +50,7 @@ const About = () => {
           <div className="row">
             <div className="col-lg-6 col-md-12 col-12">
               <div
-                className="banner-img img-zoom aos-init aos-animate"
+                className={`${styles.bannerImg} banner-img img-zoom aos-init aos-animate`}
                 data-aos="zoom-in"
                 data-aos-easing="linear"
                 data-aos-duration="600"
@@ -129,7 +129,7 @@ const About = () => {
             </div>
             <div className="col-lg-6 col-md-12 col-12">
               <div
-                className="banner-img img-zoom aos-init aos-animate"
+                className={`${styles.bannerImg} banner-img img-zoom aos-init aos-animate`}
                 data-aos="zoom-in"
                 data-aos-easing="linear"
                 data-aos-duration="1200"

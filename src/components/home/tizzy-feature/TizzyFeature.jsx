@@ -110,7 +110,7 @@ const TizzyFeature = () => {
                 easy on Tizzy® Mail for eg. sales@YourCompanyName.com
               </p>
 
-              <ArrowButton link="#" text="GET START NOW" />
+              <ArrowButton link="/tizzy-mail" text="GET START NOW" />
 
               {/* RATINGS */}
               <div

@@ -288,6 +288,47 @@ p {
   margin-bottom: 10px;
 }
 
+#loader.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+#loader {
+  position: fixed;
+  inset: 0;
+  background: var(--color-c0daf9);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity 0.8s ease,
+    visibility 0.8s ease;
+}
+
+.loading-text {
+  margin-top: 15px;
+  font-family: Arial, sans-serif;
+  color: var(--color-0355ac);
+  letter-spacing: 2px;
+}
+
+.progress-container {
+  width: 200px;
+  height: 6px;
+  background: var(--color-000000);
+  border-radius: 20px;
+  overflow: hidden;
+  margin-top: 25px;
+}
+.logo {
+  width: 200px;
+  height: auto;
+}
+
 .weight-Light {
   font-weight: var(--font-weight-Light);
 }
@@ -501,15 +542,6 @@ p {
   margin-top: 25px;
 }
 
-.progress-bar {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, #1e58b4, #ff3b30, #f1c40f, #2ecc71);
-  background-size: 300% 100%;
-  animation: gradientMove 2s linear infinite;
-  transition: width 0.3s ease;
-}
-
 .loading-text {
   margin-top: 15px;
   font-family: Arial, sans-serif;
@@ -517,18 +549,24 @@ p {
   letter-spacing: 2px;
 }
 
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #1e58b4, #ff3b30, #f1c40f, #2ecc71, #1e58b4);
+  background-size: 300% 100%;
+  animation: gradientMove 2s linear infinite;
+  transition: width 0.3s ease;
+}
+
 @keyframes gradientMove {
   0% {
-    background-position: 0% 50%;
+    background-position: 0% 0%;
   }
-
   100% {
-    background-position: 100% 50%;
+    background-position: 300% 0%;
   }
 }
 
-/* loader css */
-/* top-header */
 .top-header {
   background-color: var(--color-1e58b4);
   width: 100%;
@@ -1330,7 +1368,7 @@ p {
   color: var(--color-000000);
   font-weight: var(--font-weight-Regular);
   text-align: left;
-  padding: 30px 100px 30px 30px;
+  /* padding: 30px 100px 30px 30px; */
   margin: 0;
   border: none;
   background: var(--color-f9fafc);
@@ -4373,7 +4411,7 @@ p {
 
   .home-banner-img {
     position: relative;
-    top: 30px;
+    /* top: 30px; */
   }
 
   .boost-business-section .banner-img {
@@ -4898,8 +4936,12 @@ p {
   .data-backup-bottom {
     margin-bottom: 20px;
   }
+
   .transfer-modal .modal-dialog {
     max-width: 90%;
+  }
+  .testimonial-right {
+    width: 100%;
   }
 }
 
@@ -5088,7 +5130,7 @@ p {
 
   .testimonial-right {
     width: 100%;
-    float: left;
+    /* float: left; */
     margin-top: 30px;
   }
 
