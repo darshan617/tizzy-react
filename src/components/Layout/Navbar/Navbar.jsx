@@ -13,10 +13,30 @@ import ArrowButton from "@/components/arrow-button/ArrowButton";
 import tizzyMailImg from "@/assets/Navbar/tizzyMail.png";
 import microsoftImg from "@/assets/Navbar/microsoft.png";
 import Google_WorkspaceImg from "@/assets/Navbar/Google_Workspace.png";
+import logo from "@/assets/Navbar/logo.png";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
+  function Loader({ loading }) {
+    return (
+      <div id="loader" className={loading ? "" : "fade-out"}>
+        {" "}
+        <Image src={logo} alt="Tizzy Cloud Logo" className="logo" />{" "}
+        <div className="progress-container">
+          {" "}
+          <div
+            className="progress-bar"
+            id="progress"
+            style={{ width: "100%" }}
+          ></div>{" "}
+        </div>{" "}
+        <p className="loading-text">Loading...</p>{" "}
+      </div>
+    );
+  }
+
   const [isDropdownOpen, setIsDropdownOpen] = useState("");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isUserLoginIn, setIsUserLoginIn] = useState(false);
@@ -60,7 +80,7 @@ const Navbar = () => {
       setUserData(null);
     }
   }, []);
-  console.log("userData", userData, isUserLoginIn);
+  // console.log("userData", userData, isUserLoginIn);
 
   const MANAGED_SERVICE_OPTIONS = [
     {
@@ -73,6 +93,25 @@ const Navbar = () => {
     },
   ];
   const navRef = useRef(null);
+
+  const [loading, setLoading] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setLoading(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 3500); // 3.5 sec delay
+
+    return () => clearTimeout(timer);
+  }, [pathname]);
+
+  const handleLinkClick = () => {
+    setLoading(true);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -90,6 +129,8 @@ const Navbar = () => {
   }, []);
   return (
     <>
+      <Loader loading={loading} />
+
       <header className="main-header g_header">
         {/* Top Header */}
         <div className={styles.topHeader}>
@@ -99,13 +140,19 @@ const Navbar = () => {
                 className={`${styles.topHeaderText} d-flex align-items-center`}
               >
                 <li>
-                  <Link href="/contact">Quick Assist</Link>
+                  <Link href="/contact" onClick={handleLinkClick}>
+                    Quick Assist
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/partner">Partner with us</Link>
+                  <Link href="/partner" onClick={handleLinkClick}>
+                    Partner with us
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/contact">Sales Enquiry</Link>
+                  <Link href="/contact" onClick={handleLinkClick}>
+                    Sales Enquiry
+                  </Link>
                 </li>
 
                 <li className={styles.helpline}>
@@ -145,7 +192,7 @@ const Navbar = () => {
                       color="var(--color-c0daf9)"
                       className="mx-1"
                     />
-                    <Link href="auth/login"> Log In</Link>
+                    <Link href="auth/login">Log In</Link>
                     <span> / </span>
                     <Link href="/auth/signup">Sign Up</Link>
                   </li>
@@ -160,19 +207,27 @@ const Navbar = () => {
           <div className="mainContainer">
             <div className={styles.mainMenuWrapper}>
               <Link href="/">
-              <Image
-                src={mainLogo}
-                className={styles.mainLogo}
-                width={800}
+                <Image
+                  src={mainLogo}
+                  className={styles.mainLogo}
+                  width={800}
                   height={800}
                   alt="logo"
                 />
               </Link>
               <div className={styles.menuLinks}>
-                <Link href={"/tizzy-mail"}>Tizzy Mail</Link>
-                <Link href={"/cloud-microsoft-365"}>Microsoft 365</Link>
-                <Link href={"/google-workspace"}>Google Workspace</Link>
-                <Link href={"/migration"}>Migration</Link>
+                <Link href={"/tizzy-mail"} onClick={handleLinkClick}>
+                  Tizzy Mail
+                </Link>
+                <Link href={"/cloud-microsoft-365"} onClick={handleLinkClick}>
+                  Microsoft 365
+                </Link>
+                <Link href={"/google-workspace"} onClick={handleLinkClick}>
+                  Google Workspace
+                </Link>
+                <Link href={"/migration"} onClick={handleLinkClick}>
+                  Migration
+                </Link>
                 <CustomDropdown
                   isDropdownOpen={isDropdownOpen}
                   mainText={"Managed Services"}
@@ -199,77 +254,91 @@ const Navbar = () => {
           </div>
         </div>
       </header>
-      <div className={styles.bottomHeader}>
-        <div className="container container-1760">
-          <div className="col-lg-12 d-flex align-items-center">
-            {/* Workspace Icons */}
-            <div
-              className={`${styles.workspaceSection} d-flex justify-content-lg-evenly justify-content-between`}
-            >
+      {pathname !== "/thank-you" && (
+        <div className={styles.bottomHeader}>
+          <div className="container container-1760">
+            <div className="col-lg-12 d-flex align-items-center">
+              {/* Workspace Icons */}
               <div
-                className={`${styles.workspaceBox} text-center`}
-                data-aos="zoom-in"
-                data-aos-easing="linear"
-                data-aos-duration="800"
+                className={`${styles.workspaceSection} d-flex justify-content-lg-evenly justify-content-between`}
               >
-                <Link href="/tizzy-mail" className={styles.workspaceA}>
-                  <div className={styles.workspaceIcon}>
-                    <Image
-                      src={tizzyMailImg}
-                      alt="Tizzy Mail"
-                      width={200}
-                      height={100}
-                    />
-                  </div>
-                </Link>
+                <div
+                  className={`${styles.workspaceBox} text-center`}
+                  data-aos="zoom-in"
+                  data-aos-easing="linear"
+                  data-aos-duration="800"
+                >
+                  <Link
+                    href="/tizzy-mail"
+                    onClick={handleLinkClick}
+                    className={styles.workspaceA}
+                  >
+                    <div className={styles.workspaceIcon}>
+                      <Image
+                        src={tizzyMailImg}
+                        alt="Tizzy Mail"
+                        width={200}
+                        height={100}
+                      />
+                    </div>
+                  </Link>
+                </div>
+
+                <div
+                  className={`${styles.workspaceBox} text-center`}
+                  data-aos="zoom-in"
+                  data-aos-easing="linear"
+                  data-aos-duration="1200"
+                >
+                  <Link
+                    href="/cloud-microsoft-365"
+                    onClick={handleLinkClick}
+                    className={styles.workspaceA}
+                  >
+                    <div className={styles.workspaceIcon}>
+                      <Image
+                        src={microsoftImg}
+                        alt="Microsoft 365"
+                        width={200}
+                        height={100}
+                      />
+                    </div>
+                  </Link>
+                </div>
+
+                <div
+                  className={`${styles.workspaceBox} text-center`}
+                  data-aos="zoom-in"
+                  data-aos-easing="linear"
+                  data-aos-duration="1000"
+                >
+                  <Link
+                    href="/google-workspace"
+                    onClick={handleLinkClick}
+                    className={styles.workspaceA}
+                  >
+                    <div className={styles.workspaceIcon}>
+                      <Image
+                        src={Google_WorkspaceImg}
+                        alt="Google Workspace"
+                        width={200}
+                        height={100}
+                      />
+                    </div>
+                  </Link>
+                </div>
               </div>
 
+              {/* CTA Button */}
               <div
-                className={`${styles.workspaceBox} text-center`}
-                data-aos="zoom-in"
-                data-aos-easing="linear"
-                data-aos-duration="1200"
+                className={`${styles.workspaceRight} ${styles.workspaceRightDesktop} d-flex justify-content-end`}
               >
-                <Link href="/cloud-microsoft-365" className={styles.workspaceA}>
-                  <div className={styles.workspaceIcon}>
-                    <Image
-                      src={microsoftImg}
-                      alt="Microsoft 365"
-                      width={200}
-                      height={100}
-                    />
-                  </div>
-                </Link>
+                <ArrowButton text="Get Start Now" link="/contact" />
               </div>
-
-              <div
-                className={`${styles.workspaceBox} text-center`}
-                data-aos="zoom-in"
-                data-aos-easing="linear"
-                data-aos-duration="1000"
-              >
-                <Link href="/google-workspace" className={styles.workspaceA}>
-                  <div className={styles.workspaceIcon}>
-                    <Image
-                      src={Google_WorkspaceImg}
-                      alt="Google Workspace"
-                      width={200}
-                      height={100}
-                    />
-                  </div>
-                </Link>
-              </div>
-            </div>
-
-            {/* CTA Button */}
-            <div
-              className={`${styles.workspaceRight} ${styles.workspaceRightDesktop} d-flex justify-content-end`}
-            >
-              <ArrowButton text="Get Start Now" link="/contact" />
             </div>
           </div>
         </div>
-      </div>
+      )}
       <Sidebar
         isSidebarOpen={isSidebarOpen}
         setIsSidebarOpen={setIsSidebarOpen}

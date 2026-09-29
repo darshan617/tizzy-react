@@ -1,11 +1,13 @@
-import SignupForm from '@/components/auth/sign-up/SignupForm';
-import React, { useState } from 'react'
+import SignupForm from "@/components/auth/sign-up/SignupForm";
+import Layout from "@/components/Layout/Layout";
+import React, { useState } from "react";
 
 const signup = () => {
-
   return (
-  <SignupForm/>
+    <Layout>
+      <SignupForm />
+    </Layout>
   );
-}
+};
 
-export default signup
+export default signup;

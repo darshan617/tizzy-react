@@ -26,16 +26,25 @@ const Footer = () => {
               className={styles.footerLogo}
             />
             <div className={styles.socialLinksWrapper}>
-              <Link href={"https://www.facebook.com/tizzycloud"} target="_blank">
+              <Link
+                href={"https://www.facebook.com/tizzycloud"}
+                target="_blank"
+              >
                 <FaFacebookF />
               </Link>
               <Link href={"https://x.com/tizzy_cloud"} target="_blank">
                 <FaXTwitter />
               </Link>
-              <Link href={"https://www.instagram.com/tizzy_cloud/"} target="_blank">
+              <Link
+                href={"https://www.instagram.com/tizzy_cloud/"}
+                target="_blank"
+              >
                 <FaInstagram />
               </Link>
-              <Link href={"https://www.linkedin.com/company/tizzy-cloud/"} target="_blank">
+              <Link
+                href={"https://www.linkedin.com/company/tizzy-cloud/"}
+                target="_blank"
+              >
                 <FaLinkedinIn />
               </Link>
               <Link href={"#"}>

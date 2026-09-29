@@ -6,27 +6,22 @@ import { Provider } from "react-redux";
 import { useEffect, useState } from "react";
 import Aos from "aos";
 import { FaArrowUp } from "react-icons/fa";
-import { SlEnvolope } from "react-icons/sl";
 import EnquiryForm from "@/components/enquiry-form/EnquiryForm";
-
-function InquiryButton({ onClick }) {
-  return (
-    <button type="button" id="inquiryBtn" className="inquiry-sticky-btn" onClick={onClick}>
-      <span className="inquiry-icon">
-        <SlEnvolope />
-      </span>{" "}
-      Inquiry Now
-    </button>
-  );
-}
+import logo from "@/assets/Navbar/logo.png";
+import tizzyLogo from "@/assets/Navbar/tizzy-logo.png"
+import Image from "next/image";
+import Head from "next/head";
 
 function BackToTopButton() {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setShow(window.scrollY > 300);
+
     onScroll();
+
     window.addEventListener("scroll", onScroll);
+
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -43,82 +38,132 @@ function BackToTopButton() {
   );
 }
 
+function Loader({ loading }) {
+  return (
+    <div id="loader" className={loading ? "" : "fade-out"}>
+      <Image src={logo} alt="logo" className="logo" />
+
+      <div className="progress-container">
+        <div
+          className="progress-bar"
+          id="progress"
+          style={{ width: "100%" }}
+        ></div>
+      </div>
+
+      <p className="loading-text">Loading...</p>
+    </div>
+  );
+}
+
 export default function App({ Component, pageProps, ...rest }) {
   const { store } = storeWrapper.useWrappedStore(rest);
-  const [showEnquiryForm, setShowEnquiryForm] = useState(false);
+
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    Aos.init({ duration: 1000, once: true });
+    Aos.init({
+      duration: 1000,
+      once: true,
+    });
+
+    const handleLoad = () => {
+      setTimeout(() => {
+        setLoading(false);
+      }, 500);
+    };
+
+    if (document.readyState === "complete") {
+      handleLoad();
+    } else {
+      window.addEventListener("load", handleLoad);
+    }
+
+    return () => {
+      window.removeEventListener("load", handleLoad);
+    };
   }, []);
 
   return (
-    <Provider store={store}>
-      <Component {...pageProps} />
-      <InquiryButton onClick={() => setShowEnquiryForm(true)} />
-      <BackToTopButton />
-      <EnquiryForm show={showEnquiryForm} onClose={() => setShowEnquiryForm(false)} />
-      <style jsx global>{`
-        .inquiry-sticky-btn {
-          z-index: 9999;
-          color: #fff;
-          border: none;
-          outline: none;
-          padding: 12px 16px;
-        }
-        .inquiry-sticky-btn:hover {
-          background: #32a953;
-          color: #fff;
-        }
-        .inquiry-icon {
-          display: flex;
-          align-items: center;
-          font-size: 18px;
-        }
-        @media (max-width: 500px) {
-          .inquiry-sticky-btn {
-            bottom: 18px;
-            left: 18px;
-            padding: 10px 16px;
-            font-size: 14px;
-          }
-        }
+    <>
+      <Head>
+        <title>Tizzy Cloud</title>
+        <link rel="icon" type="image/png" href={tizzyLogo.src} />
+      </Head>
 
-        .back-to-top-btn {
-          position: fixed;
-          bottom: 20px;
-          right: 10px;
-          z-index: 9999;
-          background: black;
-          color: #fff;
-          border: none;
-          outline: none;
-          padding: 12px 16px;
-          border-radius: 50%;
-          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-          cursor: pointer;
-          transition: background 0.2s;
-          font-size: 24px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 50px;
-          height: 50px;
-        }
-        .back-to-top-btn:hover {
-          background: rgb(34, 66, 102);
-          color: #fff;
-        }
-        @media (max-width: 500px) {
-          .back-to-top-btn {
-            bottom: 18px;
-            right: 18px;
-            padding: 10px 13px;
-            font-size: 20px;
-            height: 45px;
-            width: 45px;
+      <Provider store={store}>
+        <Loader loading={loading} />
+        <Component {...pageProps} />
+        <EnquiryForm />
+        <BackToTopButton />
+
+        <style jsx global>{`
+          .inquiry-sticky-btn {
+            z-index: 9999;
+            color: #fff;
+            border: none;
+            outline: none;
+            padding: 12px 16px;
           }
-        }
-      `}</style>
-    </Provider>
+
+          .inquiry-sticky-btn:hover {
+            background: #32a953;
+            color: #fff;
+          }
+
+          .inquiry-icon {
+            display: flex;
+            align-items: center;
+            font-size: 18px;
+          }
+
+          @media (max-width: 500px) {
+            .inquiry-sticky-btn {
+              right: 0;
+              width: fit-content;
+              font-size: 14px;
+            }
+          }
+
+          .back-to-top-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 10px;
+            z-index: 9999;
+            background: black;
+            color: #fff;
+            border: none;
+            outline: none;
+            padding: 12px 16px;
+            border-radius: 50%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            transition: background 0.2s;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+          }
+
+          .back-to-top-btn:hover {
+            background: rgb(34, 66, 102);
+            color: #fff;
+          }
+
+          @media (max-width: 500px) {
+            .back-to-top-btn {
+              bottom: 18px;
+              right: 18px;
+              padding: 10px 13px;
+              font-size: 20px;
+              height: 45px;
+              width: 45px;
+            }
+          }
+        `}</style>
+      </Provider>
+    </>
   );
 }
