@@ -1,0 +1,65 @@
+.upiAccordionHeader {
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 14px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.upiGenerateBtn {
+  width: 100%;
+  border: 1.5px solid #1665b6;
+  color: #1665b6 !important;
+  background: #fff;
+  border-radius: 8px;
+  padding: 12px;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.upiOptionCard {
+  border: 1px solid #dbe6f3;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+  box-shadow: 0 6px 18px rgba(22, 101, 182, 0.08);
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
+}
+
+.upiOptionTitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.upiOptionCard.open .upiAccordionBody {
+  display: block;
+}
+
+.upiQrBox {
+  border: 1px solid #d5e5f7;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #fafdff 0%, #f2f8ff 100%);
+  padding: 18px;
+  margin-top: 16px;
+  text-align: center;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+}
+
+.upiAccordionBody {
+  /* display: none; */
+  padding: 0 14px 14px;
+  border-top: 1px solid #eaf1f9;
+}
+.upiOptionGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin-bottom: 16px;
+}
