@@ -5,7 +5,7 @@ const signupApi = apiSlice.injectEndpoints({
     register: builder.mutation({
       query: ({ body }) => {
         return {
-          url: "/register-validation",
+          url: "/register",
           method: "POST",
           body: body,
         };
@@ -15,7 +15,7 @@ const signupApi = apiSlice.injectEndpoints({
     searchGstin: builder?.mutation({
       query: ({ body }) => {
         return {
-          url: "/search-gstin",
+          url: "https://stagingsuperadmin.tizzygroup.com/api/v1/search-gstin",
           method: "POST",
           body: body,
         };
@@ -25,7 +25,17 @@ const signupApi = apiSlice.injectEndpoints({
     getOtpVerified: builder?.mutation({
       query: ({ body }) => {
         return {
-          url: "/user-login-verify-otp",
+          url: "/verify-otp",
+          method: "POST",
+          body: body,
+        };
+      },
+      providesTags: ["signup"],
+    }),
+    resendOtp: builder?.mutation({
+      query: ({ body }) => {
+        return {
+          url: "/resend-otp",
           method: "POST",
           body: body,
         };
@@ -39,4 +49,5 @@ export const {
   useRegisterMutation,
   useSearchGstinMutation,
   useGetOtpVerifiedMutation,
+  useResendOtpMutation,
 } = signupApi;

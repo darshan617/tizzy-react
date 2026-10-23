@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "@/components/auth/sign-in/SignInForm.module.css";
 import {
   useRegisterMutation,
@@ -16,20 +16,15 @@ const SignupForm = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const [register] = useRegisterMutation();
-  const [searchGstin] = useSearchGstinMutation();
+  const [searchGstin, { isSuccess: isGSTINSucess }] = useSearchGstinMutation();
   const [userDetails, setUserDetails] = useState({
     name: "",
     email: "",
     mobile: "",
+    terms_and_conditions: false,
     gstin: "",
     company_name: "",
     company_address: "",
-    terms_and_conditions: false,
-    country: "",
-    state: "",
-    city: "",
-    zip_code: "",
-    pan_no: "",
   });
 
   const [isValidGstIn, setIsValidGstIn] = useState(false);
@@ -55,7 +50,7 @@ const SignupForm = () => {
         body: userDetails,
       });
       if (res?.data?.success) {
-        // Cookies.set("userData", JSON.stringify(userDetails));
+        Cookies.set("userData", JSON.stringify(userDetails));
         dispatch(setUserData(userDetails));
         router?.push("/auth/otp-verfication");
       }
@@ -66,15 +61,7 @@ const SignupForm = () => {
       name: "",
       email: "",
       mobile: "",
-      gstin: "",
-      company_name: "",
-      company_address: "",
       terms_and_conditions: false,
-      country: "",
-      state: "",
-      city: "",
-      zip_code: "",
-      pan_no: "",
     });
   };
   const handleSearchGstin = async () => {
@@ -86,6 +73,8 @@ const SignupForm = () => {
       });
 
       if (res?.data?.success) {
+        console.log(res);
+
         const compnayName = res?.data?.data?.company_name;
         const companyAddress = res?.data?.data?.company_address;
         const city = res?.data?.data?.city;
@@ -114,6 +103,7 @@ const SignupForm = () => {
       setIsValidGstIn(false);
     }
   };
+
   return (
     <>
       <div className="auth-wrapper">
@@ -174,6 +164,8 @@ const SignupForm = () => {
                           id="name"
                           className="form-control auth-input"
                           placeholder="Name"
+                          // value={userDetails?.company_name}
+                          onChange={handleChange}
                         />
                       </div>
                       <div className="text-danger" id="error-name"></div>
@@ -187,6 +179,8 @@ const SignupForm = () => {
                           id="email"
                           className="form-control auth-input"
                           placeholder="Email Address"
+                          // value={userDetails?.company_name}
+                          onChange={handleChange}
                         />
                       </div>
                       <div className="text-danger" id="error-email"></div>
@@ -200,6 +194,8 @@ const SignupForm = () => {
                           id="mobile"
                           className="form-control auth-input"
                           placeholder="Mobile Number"
+                          // value={userDetails?.company_name}
+                          onChange={handleChange}
                         />
                       </div>
                       <div className="text-danger" id="error-mobile"></div>
@@ -215,9 +211,15 @@ const SignupForm = () => {
                             id="gstin"
                             className="form-control auth-input"
                             placeholder="GSTIN"
+                            value={userDetails?.gstin}
+                            onChange={handleChange}
                           />
 
-                          <button id="search" type="button">
+                          <button
+                            id="search"
+                            type="button"
+                            onClick={handleSearchGstin}
+                          >
                             Search
                             <span
                               id="spinner2"
@@ -229,39 +231,46 @@ const SignupForm = () => {
                       </div>
                       <div className="text-danger" id="error-gstin"></div>
                     </div>
-                    <div className="mb-3 d-none" id="CompanyName">
-                      <div className="position-relative">
-                        <i className="fa fa-user input-icon"></i>
-                        <input
-                          type="text"
-                          name="company_name"
-                          id="company_name"
-                          className="form-control auth-input"
-                          placeholder="Company Name"
-                          readonly=""
-                        />
-                      </div>
-                      <div
-                        className="text-danger"
-                        id="error-company_name"
-                      ></div>
-                    </div>
-                    <div className="mb-3 d-none" id="CompanyAddress">
-                      <div className="position-relative">
-                        <i className="fa fa-user input-icon"></i>
-                        <input
-                          type="text"
-                          name="company_address"
-                          id="company_address"
-                          className="form-control auth-input"
-                          placeholder="Company Address"
-                        />
-                      </div>
-                      <div
-                        className="text-danger"
-                        id="error-company_address"
-                      ></div>
-                    </div>
+                    {isGSTINSucess && (
+                      <>
+                        <div className="mb-3 " id="CompanyName">
+                          <div className="position-relative">
+                            <FaUser className={styles.inputIcon} />
+                            <input
+                              type="text"
+                              name="company_name"
+                              id="company_name"
+                              className="form-control auth-input"
+                              placeholder="Company Name"
+                              readonly=""
+                              value={userDetails?.company_name}
+                              disabled
+                            />
+                          </div>
+                          <div
+                            className="text-danger"
+                            id="error-company_name"
+                          ></div>
+                        </div>
+                        <div className="mb-3 " id="CompanyAddress">
+                          <div className="position-relative">
+                            <FaFile className={styles.inputIcon} />
+                            <input
+                              type="text"
+                              name="company_address"
+                              id="company_address"
+                              className="form-control auth-input"
+                              placeholder="Company Address"
+                              value={userDetails?.company_address}
+                            />
+                          </div>
+                          <div
+                            className="text-danger"
+                            id="error-company_address"
+                          ></div>
+                        </div>
+                      </>
+                    )}
                     <div className="mb-4">
                       <div className="form-check">
                         <input
@@ -269,6 +278,8 @@ const SignupForm = () => {
                           name="terms_and_conditions"
                           id="terms_and_conditions"
                           className="form-check-input"
+                          onChange={handleChange}
+
                         />
                         <label
                           className="form-check-label text-muted ms-1"
@@ -291,8 +302,9 @@ const SignupForm = () => {
                       </div>
                     </div>
                     <button
-                      type="submit"
+                      type="button"
                       id="submit"
+                      onClick={handleRegister}
                       className="btn btn-register mb-4 text-white d-flex align-items-center justify-content-center gap-2"
                     >
                       <span
