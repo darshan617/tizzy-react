@@ -50,6 +50,22 @@
     font-weight: 500;
 }
 
+.inputIcon {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    color: #a0a0a0;
+    z-index: 4;
+    transition: color 0.3s ease;
+}
+.otpInput {
+    letter-spacing: 15px;
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: bold;
+}
+
 @media(max-width: 767px){
     .authRight{
         display: none;
