@@ -552,7 +552,14 @@ p {
 .progress-bar {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, #1e58b4, #ff3b30, #f1c40f, #2ecc71, #1e58b4);
+  background: linear-gradient(
+    90deg,
+    #1e58b4,
+    #ff3b30,
+    #f1c40f,
+    #2ecc71,
+    #1e58b4
+  );
   background-size: 300% 100%;
   animation: gradientMove 2s linear infinite;
   transition: width 0.3s ease;
@@ -6937,6 +6944,7 @@ select.form-input-custom {
   transform: translateY(-1px);
   box-shadow: 0 6px 20px rgba(22, 101, 182, 0.35);
 }
+
 
 /* ── Responsive ── */
 @media (max-width: 991px) {

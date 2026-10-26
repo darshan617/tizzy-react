@@ -1,8 +1,9 @@
 "use client";
-
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-
+import styles from "@/components/select-plan/checkout/Checkout.module.css";
+import { useSearchGstinMutation } from "@/redux/apis/signupApi";
+import { useToast } from "@/custom-hooks/toast/ToastProvider";
 const Checkout = () => {
   const states = [
     "Andaman and Nicobar Islands",
@@ -44,6 +45,88 @@ const Checkout = () => {
     "West Bengal",
   ];
 
+  const initialState = {
+    name: "",
+    email: "",
+    mobile: "",
+    terms_and_conditions: false,
+    gstin: "",
+    company_name: "",
+    company_address: "",
+    city: "",
+    country: "",
+    state: "",
+    zip_code: "",
+    pan_no: "",
+  };
+
+  const [searchGstin, { isLoading: isSearching }] = useSearchGstinMutation();
+
+  const [userDetails, setUserDetails] = useState(initialState);
+
+  const [showCompanyDetails, setShowCompanyDetails] = useState(false);
+  const [isValidGstIn, setIsValidGstIn] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setUserDetails((prev) => ({
+      ...prev,
+      [name]: name === "gstin" ? value.toUpperCase() : value,
+    }));
+
+    if (name === "gstin") {
+      setIsValidGstIn(false);
+    }
+  };
+
+  const { showToast } = useToast();
+
+  const handleSearchGstin = async () => {
+    if (!userDetails.gstin.trim()) {
+      showToast("Please enter a GSTIN.", "error");
+
+      return;
+    }
+
+    try {
+      const res = await searchGstin({
+        body: { gstin: userDetails.gstin.trim() },
+      }).unwrap();
+
+      if (res?.success) {
+        const d = res?.data || {};
+
+        setIsValidGstIn(true);
+
+        setUserDetails((prev) => ({
+          ...prev,
+          company_name: d.company_name || "",
+          company_address: d.company_address || "",
+          city: d.city || "",
+          country: d.country || "",
+          state: d.state || "",
+          zip_code: d.pincode || "",
+          pan_no: d.pan_no || "",
+        }));
+
+        showToast("GSTIN details fetched.", "success");
+      } else {
+        setIsValidGstIn(false);
+
+        showToast(res?.message || "Invalid GSTIN.", "error");
+      }
+    } catch (error) {
+      setIsValidGstIn(false);
+
+      showToast(
+        error?.data?.message || "Could not fetch GSTIN details.",
+
+        "error",
+      );
+    }
+  };
+
   return (
     <section className="checkout-section select-plan-section position-relative">
       <div className="container">
@@ -52,7 +135,9 @@ const Checkout = () => {
         <div className="cart-progress">
           <div className="step-wrapper">
             <div className="step">Select Plan</div>
+
             <div className="step active">Checkout</div>
+
             <div className="step">Payment</div>
           </div>
 
@@ -64,7 +149,7 @@ const Checkout = () => {
             <div className="cart-plan-box mb-30" id="domain-setup-box">
               <h3 className="plan-box-title div-text mb-0">
                 <Image
-                  src="https://goyalinfotech.in/tizzy/public/home/images/icons/world-wide-web.png"
+                  src="https\://goyalinfotech.in/tizzy/public/home/images/icons/world-wide-web.png"
                   alt="world-wide-web"
                   width={24}
                   height={24}
@@ -88,6 +173,7 @@ const Checkout = () => {
                         className="form-control"
                         style={{
                           height: "55px",
+
                           borderRadius: "10px",
                         }}
                       />
@@ -104,7 +190,9 @@ const Checkout = () => {
                         role="status"
                         style={{
                           right: "15px",
+
                           top: "18px",
+
                           display: "none",
                         }}
                       />
@@ -141,46 +229,53 @@ const Checkout = () => {
                 <form className="dashboard-form" id="checkout-form">
                   <input
                     type="hidden"
-                    name="_token"
+                    name="\_token"
                     value=""
                     autoComplete="off"
                   />
+
                   <input
                     type="hidden"
                     name="order_id"
                     id="form_order_id"
                     value=""
                   />
+
                   <input
                     type="hidden"
                     name="total_amount"
                     id="form_total_amount"
                     value=""
                   />
+
                   <input
                     type="hidden"
                     name="tax_amount"
                     id="form_tax_amount"
                     value=""
                   />
+
                   <input
                     type="hidden"
                     name="subtotal"
                     id="form_subtotal"
                     value=""
                   />
+
                   <input
                     type="hidden"
                     name="discount_amount"
                     id="form_discount_amount"
                     value="0.00"
                   />
+
                   <input
                     type="hidden"
                     name="domain_name"
                     id="form_domain_name"
                     value=""
                   />
+
                   <input
                     type="hidden"
                     name="promo_code"
@@ -193,12 +288,14 @@ const Checkout = () => {
                       <label className="form-label">
                         First Name <span className="text-danger">*</span>
                       </label>
+
                       <input
                         type="text"
                         className="form-control"
                         name="first_name"
                         id="first_name"
                       />
+
                       <div className="text-danger" id="error-first_name" />
                     </div>
 
@@ -206,12 +303,14 @@ const Checkout = () => {
                       <label className="form-label">
                         Last Name <span className="text-danger">*</span>
                       </label>
+
                       <input
                         type="text"
                         className="form-control"
                         name="last_name"
                         id="last_name"
                       />
+
                       <div className="text-danger" id="error-last_name" />
                     </div>
 
@@ -219,12 +318,14 @@ const Checkout = () => {
                       <label className="form-label">
                         Email address <span className="text-danger">*</span>
                       </label>
+
                       <input
                         type="email"
                         className="form-control"
                         name="email"
                         id="email"
                       />
+
                       <div className="text-danger" id="error-email" />
                     </div>
 
@@ -232,6 +333,7 @@ const Checkout = () => {
                       <label className="form-label">
                         Phone number <span className="text-danger">*</span>
                       </label>
+
                       <div className="input-group">
                         <input
                           type="text"
@@ -241,6 +343,7 @@ const Checkout = () => {
                           name="mobile"
                         />
                       </div>
+
                       <div className="text-danger" id="error-mobile" />
                     </div>
 
@@ -248,6 +351,7 @@ const Checkout = () => {
                       <label className="form-label">
                         Country <span className="text-danger">*</span>
                       </label>
+
                       <select
                         className="form-select form-control"
                         name="country"
@@ -256,6 +360,7 @@ const Checkout = () => {
                       >
                         <option value="101">India</option>
                       </select>
+
                       <div className="text-danger" id="error-country" />
                     </div>
 
@@ -263,6 +368,7 @@ const Checkout = () => {
                       <label className="form-label">
                         State <span className="text-danger">*</span>
                       </label>
+
                       <select
                         className="form-select form-control"
                         name="state"
@@ -270,12 +376,14 @@ const Checkout = () => {
                         defaultValue=""
                       >
                         <option value="">Select State</option>
+
                         {states.map((state) => (
                           <option key={state} value={state}>
                             {state}
                           </option>
                         ))}
                       </select>
+
                       <div className="text-danger" id="error-state" />
                     </div>
 
@@ -283,6 +391,7 @@ const Checkout = () => {
                       <label className="form-label">
                         City <span className="text-danger">*</span>
                       </label>
+
                       <select
                         className="form-select form-control"
                         name="city"
@@ -291,6 +400,7 @@ const Checkout = () => {
                       >
                         <option value="">Select City</option>
                       </select>
+
                       <div className="text-danger" id="error-city" />
                     </div>
 
@@ -298,12 +408,14 @@ const Checkout = () => {
                       <label className="form-label">
                         Postcode <span className="text-danger">*</span>
                       </label>
+
                       <input
                         type="text"
                         className="form-control"
                         name="postcode"
                         id="postcode"
                       />
+
                       <div className="text-danger" id="error-postcode" />
                     </div>
 
@@ -314,7 +426,12 @@ const Checkout = () => {
                           type="checkbox"
                           id="companyDetails"
                           name="add_company_details"
+                          checked={showCompanyDetails}
+                          onChange={(e) =>
+                            setShowCompanyDetails(e.target.checked)
+                          }
                         />
+
                         <label
                           className="form-check-label"
                           htmlFor="companyDetails"
@@ -327,7 +444,9 @@ const Checkout = () => {
                     <div
                       className="col-md-12 col-12"
                       id="gstin_fields"
-                      style={{ display: "none" }}
+                      style={{
+                        display: showCompanyDetails ? "block" : "none",
+                      }}
                     >
                       <div className="row g-3">
                         <div className="col-md-6">
@@ -335,16 +454,25 @@ const Checkout = () => {
                             GSTIN <span className="text-danger">*</span>
                           </label>
 
-                          <div className="input-group">
+                          <div className={styles.inputGroup}>
                             <input
                               type="text"
                               className="form-control"
                               name="gstin"
                               id="gstin"
                               placeholder="Enter 15 digit GSTIN"
+                              value={userDetails.gstin}
+                              onChange={handleChange}
                               style={{
                                 textTransform: "uppercase",
+
                                 height: "45px",
+
+                                borderTopRightRadius: "0",
+
+                                borderBottomRightRadius: "0",
+
+                                borderRight: "0",
                               }}
                             />
 
@@ -352,11 +480,13 @@ const Checkout = () => {
                               className="btn btn-outline-primary"
                               type="button"
                               id="search-gstin-btn"
+                              onClick={handleSearchGstin}
+                              disabled={isSearching}
                               style={{
                                 borderRadius: "0 10px 10px 0",
                               }}
                             >
-                              Search
+                              {isSearching ? "Searching..." : "Search"}
                             </button>
                           </div>
 
@@ -366,17 +496,20 @@ const Checkout = () => {
                         <div
                           className="col-md-6"
                           id="company_name_group"
-                          style={{ display: "none" }}
+                          style={{ display: isValidGstIn ? "block" : "none" }}
                         >
                           <label className="form-label">Company Name</label>
+
                           <input
                             type="text"
                             className="form-control"
                             name="company_name"
                             id="company_name"
+                            value={userDetails.company_name}
                             readOnly
                             style={{
                               backgroundColor: "#f8f9fa",
+
                               cursor: "not-allowed",
                             }}
                           />
@@ -385,17 +518,20 @@ const Checkout = () => {
                         <div
                           className="col-md-12"
                           id="company_address_group"
-                          style={{ display: "none" }}
+                          style={{ display: isValidGstIn ? "block" : "none" }}
                         >
                           <label className="form-label">Company Address</label>
+
                           <textarea
                             className="form-control"
                             name="company_address"
                             id="company_address"
+                            value={userDetails.company_address}
                             readOnly
                             rows={2}
                             style={{
                               backgroundColor: "#f8f9fa",
+
                               cursor: "not-allowed",
                             }}
                           />
@@ -407,16 +543,19 @@ const Checkout = () => {
                         name="last_updated"
                         id="last_updated"
                       />
+
                       <input
                         type="hidden"
                         name="constitution"
                         id="constitution"
                       />
+
                       <input
                         type="hidden"
                         name="registration_date"
                         id="registration_date"
                       />
+
                       <input
                         type="hidden"
                         name="nature_of_business"
@@ -461,6 +600,7 @@ const Checkout = () => {
 
                 <div className="summary-item-header">
                   <span className="item-name" id="display-plan-name" />
+
                   <span className="item-price" id="display-mailboxes">
                     - 1 Mailbox
                   </span>
@@ -472,6 +612,7 @@ const Checkout = () => {
                       12 Month
                     </span>
                   </span>
+
                   <span className="item-price-value" id="plan-price-display">
                     ₹ 792.00
                   </span>
@@ -490,6 +631,7 @@ const Checkout = () => {
                       Discount (<span id="discount-percent-display">0</span>%)
                     </span>
                   </div>
+
                   <span
                     className="item-price-value"
                     id="summary-discount-amount"
@@ -501,20 +643,23 @@ const Checkout = () => {
                 <div className="summary-item">
                   <div>
                     <span className="item-description">Taxes (GST 18%)</span>
+
                     <div className="tooltip-box">
                       <Image
-                        src="https://goyalinfotech.in/tizzy/public/home/images/icons/question-mark.png"
+                        src="https\://goyalinfotech.in/tizzy/public/home/images/icons/question-mark.png"
                         alt="question mark"
                         width={16}
                         height={16}
                         unoptimized
                       />
+
                       <span className="tooltip-text">
                         Goods and Services Tax (GST) calculated at 18% of
                         subtotal.
                       </span>
                     </div>
                   </div>
+
                   <span className="item-price-value" id="summary-gst">
                     ₹ 142.56
                   </span>
@@ -524,9 +669,12 @@ const Checkout = () => {
                   className="subtotal-section pt-0"
                   style={{
                     border: "none",
+
                     paddingTop: "15px",
+
                     marginTop: "10px",
-                    padding: "20px 0"
+
+                    padding: "20px 0",
                   }}
                 >
                   <span
@@ -535,6 +683,7 @@ const Checkout = () => {
                   >
                     Total
                   </span>
+
                   <span
                     className="subtotal-amount"
                     id="summary-total"
@@ -553,6 +702,7 @@ const Checkout = () => {
                     aria-label="Recipient's username"
                     aria-describedby="button-addon2"
                   />
+
                   <button
                     className="apply-btn"
                     id="apply-promo-btn"
@@ -574,6 +724,7 @@ const Checkout = () => {
                     role="status"
                     style={{ display: "none" }}
                   />
+
                   <span id="btn-text">Continue to Secure Checkout</span>
                 </button>
 
@@ -583,7 +734,7 @@ const Checkout = () => {
                     height="20"
                     viewBox="0 0 24 24"
                     fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns="http\://www\.w3.org/2000/svg"
                   >
                     <path
                       d="M12 1L3 6V12C3 18.6 12 24 12 24S21 18.6 21 12V6L12 1Z"
@@ -592,6 +743,7 @@ const Checkout = () => {
                       strokeWidth="2"
                       strokeLinejoin="round"
                     />
+
                     <path
                       d="M10 14L8 12M10 14L16 8"
                       stroke="white"
@@ -600,6 +752,7 @@ const Checkout = () => {
                       strokeLinejoin="round"
                     />
                   </svg>
+
                   <span>30 days money back guarantee</span>
                 </div>
               </div>
@@ -610,5 +763,4 @@ const Checkout = () => {
     </section>
   );
 };
-
 export default Checkout;

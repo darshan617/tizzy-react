@@ -64,23 +64,26 @@ const Navbar = () => {
   //     return null;
   //   }
   // })();
+
+  const [loading, setLoading] = useState(false);
+  const pathname = usePathname();
   useEffect(() => {
     try {
       const cookie = Cookies.get("userData");
-      if (!cookie) return;
-
-      const parsed = JSON.parse(cookie);
+      const parsed = cookie ? JSON.parse(cookie) : null;
 
       if (parsed && Object.keys(parsed).length > 0) {
         setIsUserLoginIn(true);
         setUserData(parsed);
+      } else {
+        setIsUserLoginIn(false);
+        setUserData(null);
       }
-    } catch (err) {
+    } catch {
       setIsUserLoginIn(false);
       setUserData(null);
     }
-  }, []);
-  // console.log("userData", userData, isUserLoginIn);
+  }, [pathname]);
 
   const MANAGED_SERVICE_OPTIONS = [
     {
@@ -93,9 +96,6 @@ const Navbar = () => {
     },
   ];
   const navRef = useRef(null);
-
-  const [loading, setLoading] = useState(false);
-  const pathname = usePathname();
 
   useEffect(() => {
     setLoading(false);
